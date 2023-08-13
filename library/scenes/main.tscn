@@ -1,15 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1xfh827rya2f"]
+[gd_scene load_steps=13 format=3 uid="uid://d1xfh827rya2f"]
 
-[ext_resource type="Texture2D" uid="uid://iyhc7dh6do2x" path="res://assets/mapPack_tilesheet.png" id="1_n2wrh"]
-[ext_resource type="Script" path="res://scripts/SpawnNodes.gd" id="2_yp7ep"]
-[ext_resource type="PackedScene" uid="uid://d3axujrfvnfbu" path="res://icon.tscn" id="3_ij1cj"]
-[ext_resource type="Script" path="res://scripts/PairCoordsScene.gd" id="4_anw0c"]
+[ext_resource type="Script" path="res://library/scripts/main.gd" id="1_epr4p"]
+[ext_resource type="Script" path="res://library/scripts/SaveLoad.gd" id="2_dtonf"]
+[ext_resource type="Texture2D" uid="uid://iyhc7dh6do2x" path="res://library/assets/mapPack_tilesheet.png" id="3_v5dkv"]
+[ext_resource type="Script" path="res://library/scripts/SpawnNodes.gd" id="4_3uq3v"]
+[ext_resource type="PackedScene" uid="uid://d3axujrfvnfbu" path="res://library/scenes/icon.tscn" id="5_4odta"]
+[ext_resource type="Script" path="res://library/scripts/PairCoordsScene.gd" id="6_00tsi"]
+[ext_resource type="PackedScene" uid="uid://b1jwqi0nttgr3" path="res://library/scenes/persistent_test.tscn" id="7_j0joq"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_vej48"]
 tile_data = PackedInt32Array(131072, 327681, 0, 196608, 327681, 1, 262144, 327681, 2, 65537, 327681, 0, 131073, 589825, 1, 196609, 393217, 1, 262145, 589825, 0, 327681, 327681, 3, 2, 327681, 0, 65538, 589825, 1, 131074, 393217, 1, 196610, 393217, 1, 262146, 393217, 1, 327682, 589825, 0, 393218, 327681, 3, 3, 393217, 0, 65539, 393217, 1, 131075, 393217, 1, 196611, 393217, 1, 262147, 393217, 1, 327683, 393217, 1, 393219, 393217, 3, 4, 458753, 0, 65540, 524289, 1, 131076, 393217, 1, 196612, 393217, 1, 262148, 393217, 1, 327684, 524289, 0, 393220, 458753, 2, 65541, 458753, 0, 131077, 524289, 1, 196613, 393217, 1, 262149, 524289, 0, 327685, 458753, 3, 131078, 458753, 0, 196614, 458753, 1, 262150, 458753, 3)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j4nka"]
-texture = ExtResource("1_n2wrh")
+texture = ExtResource("3_v5dkv")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -320,11 +323,17 @@ sources/1 = SubResource("TileSetAtlasSource_j4nka")
 pattern_0 = SubResource("TileMapPattern_vej48")
 
 [sub_resource type="Resource" id="Resource_opy8m"]
-script = ExtResource("4_anw0c")
+script = ExtResource("6_00tsi")
 coords = Vector2i(4, 2)
-scene = ExtResource("3_ij1cj")
+scene = ExtResource("5_4odta")
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3pb1d"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_epr4p")
+
+[node name="SaveLoad" type="Node" parent="."]
+script = ExtResource("2_dtonf")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0ue3b")
@@ -345,6 +354,46 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(10, 262145, 2, 9, 262145, 2, -65527, 262145, 2, -65526, 262145, 2, 458761, 262145, 2, 524297, 262145, 2, 589833, 262145, 2, 524296, 262145, 2, 524298, 262145, 2)
-script = ExtResource("2_yp7ep")
+script = ExtResource("4_3uq3v")
 layerName = "items"
-spawns = Array[ExtResource("4_anw0c")]([SubResource("Resource_opy8m")])
+spawns = Array[ExtResource("6_00tsi")]([SubResource("Resource_opy8m")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_3pb1d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" parent="." instance=ExtResource("5_4odta")]
+position = Vector2(616, 392)
+
+[node name="PersistentTest" parent="." instance=ExtResource("7_j0joq")]
+position = Vector2(292, 175)
+
+[node name="PersistentTest2" parent="." instance=ExtResource("7_j0joq")]
+position = Vector2(568, 346)
+
+[node name="PersistentTest3" parent="." instance=ExtResource("7_j0joq")]
+position = Vector2(892, 509)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Save" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="Load" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = "Load"
+
+[connection signal="pressed" from="UI/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/Load" to="." method="_on_load_pressed"]
