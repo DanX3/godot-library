@@ -32,8 +32,9 @@ func save_game():
 		# add mandatory fields
 		node_data["__filename__"] = node.get_scene_file_path()
 		node_data["__parent__"] = node.get_parent().get_path()
-		node_data["__pos_x__"] = node.position.x
-		node_data["__pos_y__"] = node.position.y
+		if node is Node2D:
+			node_data["__pos_x__"] = node.position.x
+			node_data["__pos_y__"] = node.position.y
 		
 		# JSON provides a static method to serialized JSON string.
 		var json_string = JSON.stringify(node_data)
@@ -80,7 +81,8 @@ func load_game():
 		
 		var new_object = load(node_data["__filename__"]).instantiate()
 		get_node(node_data["__parent__"]).add_child(new_object)
-		new_object.position = Vector2(node_data["__pos_x__"], node_data["__pos_y__"])
+		if new_object is Node2D:
+			new_object.position = Vector2(node_data["__pos_x__"], node_data["__pos_y__"])
 
 		# Now we set the remaining variables.
 		for i in node_data.keys():
