@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4povdaefkehl"]
+
+[ext_resource type="Script" path="res://library/scripts/Minimap.gd" id="1_08mnu"]
+[ext_resource type="Texture2D" uid="uid://b62mbglp5riq5" path="res://library/assets/pattern_blueprint.png" id="1_i60pi"]
+[ext_resource type="Texture2D" uid="uid://bjconxijh87p0" path="res://library/assets/panel_woodDetail_blank.png" id="2_7csbq"]
+[ext_resource type="Texture2D" uid="uid://cjd5okxikqb6f" path="res://library/assets/minimapIcon_arrowA.png" id="4_xeerj"]
+[ext_resource type="Texture2D" uid="uid://66i7b30e2pmj" path="res://library/assets/minimapIcon_exclamationRed.png" id="6_aj4de"]
+
+[node name="Minimap" type="MarginContainer"]
+offset_right = 120.0
+offset_bottom = 120.0
+script = ExtResource("1_08mnu")
+
+[node name="MarginGrid" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Grid" type="TextureRect" parent="MarginGrid"]
+layout_mode = 2
+texture = ExtResource("1_i60pi")
+stretch_mode = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_7csbq")
+region_rect = Rect2(0.353016, 0.215903, 63.67, 63.67)
+patch_margin_left = 28
+patch_margin_top = 28
+patch_margin_right = 28
+patch_margin_bottom = 28
+
+[node name="PlayerMarker" type="TextureRect" parent="NinePatchRect"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -4.0
+offset_right = 66.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_xeerj")
+
+[node name="MarkerDefault" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 2
+offset_left = 61.0
+offset_top = 60.0
+offset_right = 67.0
+offset_bottom = 74.0
+texture = ExtResource("6_aj4de")
+stretch_mode = 3

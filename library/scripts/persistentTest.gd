@@ -21,3 +21,7 @@ func save():
 	return {
 		"direction": direction
 	}
+
+
+func _on_timer_timeout():
+	queue_free()
