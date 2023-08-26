@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6woq5uplr2ff"]
+
+[ext_resource type="Texture2D" uid="uid://bjconxijh87p0" path="res://library/assets/panel_woodDetail_blank.png" id="1_4jvpv"]
+[ext_resource type="Script" path="res://library/scripts/billboard.gd" id="2_0qa1k"]
+[ext_resource type="Script" path="res://library/scripts/camera_3d.gd" id="3_27rmn"]
+[ext_resource type="PackedScene" uid="uid://c6bu05iwt1w3p" path="res://library/assets/Platform3D/crate.dae" id="4_fapyo"]
+[ext_resource type="PackedScene" uid="uid://byct23mtf84fw" path="res://library/assets/Platform3D/lock.dae" id="5_ydrwt"]
+[ext_resource type="PackedScene" uid="uid://bckixawdf5akl" path="res://library/assets/Platform3D/sign.dae" id="6_62exi"]
+[ext_resource type="PackedScene" uid="uid://c6q3177h6o384" path="res://library/assets/Platform3D/treePine.dae" id="7_py7p0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3egvv"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_61vwj"]
+sky_material = SubResource("ProceduralSkyMaterial_3egvv")
+
+[sub_resource type="Environment" id="Environment_m2qcq"]
+background_mode = 2
+sky = SubResource("Sky_61vwj")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snoyr"]
+albedo_color = Color(0.121569, 0.258824, 0.0588235, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tfary"]
+material = SubResource("StandardMaterial3D_snoyr")
+size = Vector2(100, 100)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m2qcq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("PlaneMesh_tfary")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+script = ExtResource("3_27rmn")
+
+[node name="crate" parent="." instance=ExtResource("4_fapyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="lock" parent="." instance=ExtResource("5_ydrwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99042, 0, 0.0936586)
+
+[node name="sign" parent="." instance=ExtResource("6_62exi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.377459, 1.19209e-07, -2.07383)
+
+[node name="treePine" parent="." instance=ExtResource("7_py7p0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10342, 0, -2.69127)
+
+[node name="treePine2" parent="." instance=ExtResource("7_py7p0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.950787, 0, 1.72182)
+
+[node name="treePine3" parent="." instance=ExtResource("7_py7p0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.41274, 0, -7.18719)
+
+[node name="Billboard" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32804, 1.36451, 0.527775)
+texture = ExtResource("1_4jvpv")
+script = ExtResource("2_0qa1k")
