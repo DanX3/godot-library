@@ -10,12 +10,7 @@ var inventory: Dictionary = {}
 
 func _ready():
 	add_to_group("persist")
-	add("heavy_stone")
-	add("rainbow_feather")
-	add("rainbow_feather")
-	add("rainbow_feather")
-	print("using non held item ", use("unobtained_item"))
-	print("using held item ", use("rainbow_feather"))
+
 
 func has(item: String) -> bool:
 	return inventory.has(item)
