@@ -1,9 +1,10 @@
 extends Control
 
 @export var initial_focus: Control
+@export var move_duration := 0.2
 var tween: Tween
 const DOT_PRODUCT_MIN = 0.9
-var focused_control: Control
+var focused_control: WeakRef = weakref(null)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,10 +19,22 @@ func _process(delta):
 func focus(control: Control):
 	var mouse_position = control.global_position + Vector2(0.0, 0.5 * control.size.y)
 	Input.warp_mouse(mouse_position)
-	global_position = mouse_position
-	focused_control = control
+#	global_position = mouse_position
+	if tween != null and tween.is_running():
+		tween.stop()
+	tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(self, "global_position", mouse_position, move_duration)\
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	focused_control = weakref(control)
+
+func unfocus():
+	focused_control = weakref(null)
 
 func _input(event):
+	if not visible:
+		return
+	
 	var direction = Vector2.ZERO
 	if Input.is_action_just_pressed("ui_down"):
 		direction = Vector2.DOWN
@@ -40,7 +53,8 @@ func _input(event):
 	var control_to_focus = null
 	var closest_distance = INF
 	for c in get_tree().get_nodes_in_group("focus"):
-		if c.get_instance_id() == focused_control.get_instance_id():
+		if focused_control.get_ref() != null \
+			and c.get_instance_id() == focused_control.get_ref().get_instance_id():
 			continue
 		if not c is Control:
 			printerr("Control ", c.name, " is not a Control. Skipping...")
