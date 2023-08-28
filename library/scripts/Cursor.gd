@@ -5,6 +5,7 @@ extends Control
 var tween: Tween
 const DOT_PRODUCT_MIN = 0.9
 var focused_control: WeakRef = weakref(null)
+var scroll_container: WeakRef = weakref(null)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +17,18 @@ func _ready():
 func _process(delta):
 	pass
 
-func focus(control: Control):
+func focus(control: Control, check_scroll_container = true):
+	# if the grandparent of the node is a scroll container
+	# tries to focus it when scrolling
+	if check_scroll_container:
+		if control.get_parent().get_parent() is ScrollContainer:
+			scroll_container = weakref(control.get_parent().get_parent())
+		else:
+			scroll_container = weakref(null)
+		if scroll_container.get_ref() != null:
+			(scroll_container.get_ref() as ScrollContainer).ensure_control_visible(control)
+			call_deferred("focus", control, false)
+	
 	var mouse_position = control.global_position + Vector2(0.0, 0.5 * control.size.y)
 	Input.warp_mouse(mouse_position)
 #	global_position = mouse_position
