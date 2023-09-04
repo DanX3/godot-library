@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://31vb65it0lqp"]
+
+[ext_resource type="Shader" path="res://library/shaders/dissolve.gdshader" id="1_u1rwa"]
+[ext_resource type="Texture2D" uid="uid://jq7111hg0pbm" path="res://library/assets/noise.png" id="2_wcnrj"]
+
+[resource]
+shader = ExtResource("1_u1rwa")
+shader_parameter/progress = 0.0
+shader_parameter/color = Color(0.972549, 0.635294, 1, 1)
+shader_parameter/thickness = 0.029
+shader_parameter/zoom = 0.048
+shader_parameter/noise_tex = ExtResource("2_wcnrj")
