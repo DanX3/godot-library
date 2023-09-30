@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var Speed := 200
+@export var speed := 200
 @export var camera: Camera2D
 @export var camera_distance := 200.0
 @export var camera_reactivity := 1
@@ -17,5 +17,5 @@ func _physics_process(delta):
 	var x = Input.get_axis("move_left", "move_right")
 	var y = Input.get_axis("move_up", "move_down")
 	walk_dir = Vector2(x, y).normalized()
-	velocity = Speed * walk_dir
+	velocity = speed * walk_dir
 	move_and_slide()

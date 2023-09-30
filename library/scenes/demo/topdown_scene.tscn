@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3n4x21vpt0ue"]
 
-[ext_resource type="TileSet" uid="uid://cheplynfy56ub" path="res://library/assets/grass_terrain.tres" id="1_2ig2h"]
+[ext_resource type="TileSet" uid="uid://cheplynfy56ub" path="res://library/assets/terrains.tres" id="1_2ig2h"]
 [ext_resource type="PackedScene" uid="uid://gi1ggya6id27" path="res://library/scenes/demo/topdown_player.tscn" id="2_tkmdr"]
 
 [node name="TopDown" type="Node2D"]
