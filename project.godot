@@ -15,9 +15,9 @@ run/main_scene="res://library/scenes/UI.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
-[editor_plugins]
+[autoload]
 
-enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
+GGS="*res://addons/ggs/classes/ggs_globals.gd"
 
 [input]
 

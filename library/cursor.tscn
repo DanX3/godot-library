@@ -40,11 +40,10 @@ _data = {
 "cursor_wave": SubResource("Animation_l6usn")
 }
 
-[node name="Cursor" type="Control" node_paths=PackedStringArray("initial_focus")]
+[node name="Cursor" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_pciqk")
-initial_focus = NodePath("")
 
 [node name="Image" type="TextureRect" parent="."]
 layout_mode = 0
@@ -59,3 +58,12 @@ autoplay = "cursor_wave"
 libraries = {
 "": SubResource("AnimationLibrary_u633h")
 }
+
+[node name="TimerHeld" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="TimerHeldTick" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="TimerHeld" to="." method="_on_timer_held_timeout"]
+[connection signal="timeout" from="TimerHeldTick" to="." method="_on_timer_held_tick_timeout"]
