@@ -16,8 +16,7 @@ func spawn() -> Node:
 	new_node.global_position = global_position
 	if rects != null and not rects.is_empty():
 		var rect = _get_random_shape()
-		new_node.global_position = global_position + rect.position + \
-		 rect.size * Vector2(randf_range(0., 1.), randf_range(0., 1.))
+		new_node.global_position = global_position + Utils.rand_rect2(rect)
 	parent.call_deferred("add_child", new_node)
 	return new_node
 
@@ -41,7 +40,6 @@ func _prepare_thresholds():
 		relative_areas.append(relative_area)
 		progression += relative_area
 		_thresholds.append(progression)
-		print('progression: %.2f' % progression)
 	
 
 # draw shape in editor

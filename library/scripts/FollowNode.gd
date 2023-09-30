@@ -1,4 +1,4 @@
-class_name Follow extends Node
+class_name FollowNode extends Node
 
 @export var node_to_follow: Node2D
 
