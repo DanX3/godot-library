@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://cehulgcqcl7x7"]
+
+[ext_resource type="Script" path="res://library/scripts/DamageLabel.gd" id="1_pagy7"]
+[ext_resource type="FontFile" uid="uid://bo2wnft3f8t0y" path="res://library/assets/anime-ace.bold.ttf" id="2_v6aca"]
+
+[sub_resource type="Animation" id="Animation_daw5o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kdopq"]
+resource_name = "shrink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(0.5, 2.73208, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvsyb"]
+_data = {
+"RESET": SubResource("Animation_daw5o"),
+"shrink": SubResource("Animation_kdopq")
+}
+
+[sub_resource type="FontVariation" id="FontVariation_m7sy2"]
+base_font = ExtResource("2_v6aca")
+variation_embolden = 0.82
+
+[node name="DamageLabel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pagy7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "shrink"
+libraries = {
+"": SubResource("AnimationLibrary_kvsyb")
+}
+
+[node name="Pivot" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 75.0
+offset_bottom = 46.0
+pivot_offset = Vector2(8.44908, 4.14075)
+
+[node name="Shadow" type="Label" parent="Pivot"]
+modulate = Color(0, 0, 0, 0.784314)
+layout_mode = 0
+offset_left = -2.02407
+offset_top = 1.91403
+offset_right = 56.9759
+offset_bottom = 40.914
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = SubResource("FontVariation_m7sy2")
+theme_override_font_sizes/font_size = 49
+text = "32"
+
+[node name="Label" type="Label" parent="Pivot"]
+modulate = Color(0.992157, 0, 0.152941, 1)
+layout_mode = 0
+offset_right = 59.0
+offset_bottom = 39.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = SubResource("FontVariation_m7sy2")
+theme_override_font_sizes/font_size = 49
+text = "32"
