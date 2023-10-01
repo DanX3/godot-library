@@ -41,6 +41,8 @@ _data = {
 }
 
 [node name="Cursor" type="Control"]
+editor_description = "Navigates among the UI items in group \"focus\".
+If present, set the initial focus"
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_pciqk")

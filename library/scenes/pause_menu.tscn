@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnqagctpgww5k"]
+
+[ext_resource type="Script" path="res://library/scripts/PauseMenu.gd" id="1_o7prc"]
+[ext_resource type="PackedScene" uid="uid://bnwqrxeihhk1" path="res://library/scenes/cursor.tscn" id="2_xt2ev"]
+
+[sub_resource type="Animation" id="Animation_imi12"]
+resource_name = "pause"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.141176)]
+}
+
+[sub_resource type="Animation" id="Animation_omp5v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djms4"]
+_data = {
+"RESET": SubResource("Animation_omp5v"),
+"pause": SubResource("Animation_imi12")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o7prc")
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -53.0
+offset_right = 129.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.5
+offset_top = 10.0
+offset_right = 23.5
+offset_bottom = 36.0
+grow_horizontal = 2
+text = "Pause"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -41.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Continue" type="Label" parent="PauseMenu/Panel/HBoxContainer" groups=["focus"]]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Continue"
+horizontal_alignment = 1
+
+[node name="Quit" type="Label" parent="PauseMenu/Panel/HBoxContainer" groups=["focus"]]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Quit"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu"]
+autoplay = "pause"
+libraries = {
+"": SubResource("AnimationLibrary_djms4")
+}
+
+[node name="Cursor" parent="PauseMenu" node_paths=PackedStringArray("initial_focus") instance=ExtResource("2_xt2ev")]
+initial_focus = NodePath("../Panel/HBoxContainer/Continue")
+
+[connection signal="selected" from="PauseMenu/Cursor" to="PauseMenu" method="_on_cursor_selected"]

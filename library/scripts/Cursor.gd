@@ -1,5 +1,7 @@
 extends Control
 
+signal selected(node_name: String)
+
 @export var initial_focus: Control
 @export var move_duration := 0.2
 var tween: Tween
@@ -49,6 +51,11 @@ func unfocus():
 
 func _input(event):
 	if not visible:
+		return
+	
+	if Input.is_action_just_pressed("ui_accept") \
+		and focused_control.get_ref() != null:
+		emit_signal("selected", focused_control.get_ref().name)
 		return
 	
 	# interrupt held timer actions

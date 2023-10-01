@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckhfvsq8uvrth"]
+[gd_scene load_steps=4 format=3 uid="uid://ckhfvsq8uvrth"]
 
 [ext_resource type="TileSet" uid="uid://cheplynfy56ub" path="res://library/assets/terrains.tres" id="1_xrrxv"]
 [ext_resource type="PackedScene" uid="uid://bgd26nbo1bbpk" path="res://library/scenes/demo/sidescroller_player.tscn" id="2_sowyc"]
+[ext_resource type="PackedScene" uid="uid://bnqagctpgww5k" path="res://library/scenes/pause_menu.tscn" id="3_3xyig"]
 
 [node name="SidescrollerScene" type="Node2D"]
 
@@ -13,3 +14,5 @@ layer_0/tile_data = PackedInt32Array(4, 589825, 8, 3, 393217, 8, 2, 393217, 8, 1
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_sowyc")]
 position = Vector2(271, 190)
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_3xyig")]
