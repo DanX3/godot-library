@@ -27,7 +27,7 @@ func damage(damage: int):
 	
 	# create damage label
 	if show_damage_label:
-		var damage_label = damage_label_scene.instantiate() as DamageLabel
+		var damage_label = damage_label_scene.instantiate() # as DamageLabel
 		get_tree().root.add_child(damage_label)
 		damage_label.init(damage, get_parent().global_position, \
 			get_parent().global_position + 40.0 * Vector2.LEFT.rotated(randf_range(0.0, 2.0 * PI)))

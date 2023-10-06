@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://3n4x21vpt0ue"]
+[gd_scene load_steps=11 format=3 uid="uid://3n4x21vpt0ue"]
 
 [ext_resource type="TileSet" uid="uid://cheplynfy56ub" path="res://library/assets/terrains.tres" id="1_2ig2h"]
 [ext_resource type="PackedScene" uid="uid://gi1ggya6id27" path="res://library/scenes/demo/topdown_player.tscn" id="2_tkmdr"]
+[ext_resource type="Script" path="res://library/scripts/FogOfWarClearer.gd" id="3_nls1q"]
+[ext_resource type="Texture2D" uid="uid://66i7b30e2pmj" path="res://library/assets/minimapIcon_exclamationRed.png" id="4_ixdm0"]
+[ext_resource type="PackedScene" uid="uid://iuvgooaa7rac" path="res://library/scenes/fog_of_war.tscn" id="5_qwoeo"]
+[ext_resource type="Shader" path="res://library/shaders/fog_of_war.gdshader" id="6_bvhod"]
+[ext_resource type="Texture2D" uid="uid://d1xrxlf476gpq" path="res://library/assets/noise_128.png" id="7_aqi2y"]
+[ext_resource type="Texture2D" uid="uid://bbn6gyu4if0dk" path="res://ignored/assets/fog_of_war_simulated.png" id="8_6uu58"]
+[ext_resource type="Texture2D" uid="uid://cripr0sy27yq" path="res://ignored/assets/rounded_rect_opacity.png" id="8_cnae5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_118wt"]
+shader = ExtResource("6_bvhod")
+shader_parameter/timeScale = 1.95
+shader_parameter/fogScale = 1.5
+shader_parameter/fog_wave = 2.215
+shader_parameter/fogTexture = ExtResource("7_aqi2y")
 
 [node name="TopDown" type="Node2D"]
 
@@ -12,3 +26,19 @@ layer_0/tile_data = PackedInt32Array(196611, 458753, 2, 3, 458753, 0, 196610, 52
 
 [node name="Player" parent="." instance=ExtResource("2_tkmdr")]
 position = Vector2(104, 125)
+camera = NodePath("")
+
+[node name="FogOfWarClearer" type="Node2D" parent="Player"]
+script = ExtResource("3_nls1q")
+sight_distance = 200.0
+
+[node name="MinimapIconExclamationRed" type="Sprite2D" parent="Player"]
+texture = ExtResource("4_ixdm0")
+
+[node name="FogOfWar" parent="." instance=ExtResource("5_qwoeo")]
+material = SubResource("ShaderMaterial_118wt")
+position = Vector2(-1785, -948)
+texture = ExtResource("8_6uu58")
+sight = 400.0
+grid_step = 200
+lightMask = ExtResource("8_cnae5")

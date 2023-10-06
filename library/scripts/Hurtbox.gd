@@ -16,7 +16,7 @@ func _process(delta):
 
 func _on_area_entered(area):
 	if area is HitBox:
-		var hitbox = area as HitBox
+		var hitbox = area # as HitBox
 		if health != null:
 			health.damage(hitbox.damage)
 		emit_signal("hurt", hitbox.damage)

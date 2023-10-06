@@ -1,19 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://iuvgooaa7rac"]
 
 [ext_resource type="Shader" path="res://library/shaders/fog_of_war.gdshader" id="1_i16d6"]
-[ext_resource type="Texture2D" uid="uid://jq7111hg0pbm" path="res://library/assets/noise_256.png" id="2_olygm"]
+[ext_resource type="Texture2D" uid="uid://d1xrxlf476gpq" path="res://library/assets/noise_128.png" id="2_fxnmy"]
 [ext_resource type="Script" path="res://library/scripts/FogOfWar.gd" id="3_t1pay"]
 [ext_resource type="Texture2D" uid="uid://butefgaxk5gu3" path="res://library/assets/circle.png" id="4_qh01y"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_efwgu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eo46o"]
 shader = ExtResource("1_i16d6")
-shader_parameter/radius = 0.002
 shader_parameter/timeScale = 1.0
-shader_parameter/fogScale = 3.73
-shader_parameter/fogTexture = ExtResource("2_olygm")
+shader_parameter/fogScale = 2.0
+shader_parameter/fog_wave = 5.0
+shader_parameter/fogTexture = ExtResource("2_fxnmy")
 
 [node name="FogOfWar" type="Sprite2D" groups=["fog_of_war"]]
-material = SubResource("ShaderMaterial_efwgu")
+material = SubResource("ShaderMaterial_eo46o")
 centered = false
 script = ExtResource("3_t1pay")
 fog_width = 4000

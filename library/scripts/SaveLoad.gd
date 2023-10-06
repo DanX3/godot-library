@@ -1,12 +1,10 @@
-extends Node
+class_name SaveLoad extends Node
 
 ## To save the state of a node you need to:
 ## 1 - add the node to the group "persist"
 ## 2 - make is as a separate scene, in order to be able to instance it and free it
 ## 3 - add a function save() returning a dictionary with all the properties you want to serialize
 ##     the scene name, parent and position are automatically serialized 
-
-class_name SaveLoad
 
 # Note: This can be called from anywhere inside the tree. This function is
 # path independent.
