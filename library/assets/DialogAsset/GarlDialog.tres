@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogCharacter" load_steps=3 format=3 uid="uid://d1cw0cs3r5arx"]
+
+[ext_resource type="Texture2D" uid="uid://hgwiic5bts5u" path="res://library/assets/DialogAsset/garl.png" id="1_3u863"]
+[ext_resource type="Script" path="res://library/scripts/DialogCharacter.gd" id="1_31l1h"]
+
+[resource]
+script = ExtResource("1_31l1h")
+name = "Garl"
+id = "garl"
+picture = ExtResource("1_3u863")

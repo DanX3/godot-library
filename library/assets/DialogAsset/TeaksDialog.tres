@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogCharacter" load_steps=3 format=3 uid="uid://di6ffte540qyj"]
+
+[ext_resource type="Script" path="res://library/scripts/DialogCharacter.gd" id="1_5dxq2"]
+[ext_resource type="Texture2D" uid="uid://ciqfumhnvu4v0" path="res://library/assets/DialogAsset/teaks.png" id="1_80nv4"]
+
+[resource]
+script = ExtResource("1_5dxq2")
+name = "Teaks"
+id = "teaks"
+picture = ExtResource("1_80nv4")

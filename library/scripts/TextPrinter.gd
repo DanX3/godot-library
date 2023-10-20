@@ -1,10 +1,11 @@
+## component that automatically prints a string to a label
+## it expects the Label as its parent
 class_name TextPrinter extends Node
 
 signal finished
 
-@export var autoplay:= false
 @export var letter_delay = 0.1
-@export var pause_char := '`'
+@export var pause_chars :Array[String] = [',', '.']
 
 var remaining_text := ""
 var timer: Timer
@@ -15,17 +16,15 @@ const PauseDuration := 0.25
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	label = get_parent() as Label
-	remaining_text = label.text
-	label.text = ""
 	
 	timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(_on_timer_timeout)
-	if autoplay:
-		timer.start(letter_delay)
 	
 
-func play():
+func play(message: String):
+	remaining_text = message
+	label.text = ""
 	timer.start(letter_delay)
 
 func _on_timer_timeout():
@@ -34,9 +33,9 @@ func _on_timer_timeout():
 	
 	# pause if there is a pause character
 	timer.wait_time = letter_delay
-	if next_letter == pause_char:
+	label.text += next_letter
+	if pause_chars.has(next_letter):
 		timer.start(PauseDuration)
-		return
 	
 	# if there is a space character, print it immediately
 #	if next_letter == " ":
@@ -44,7 +43,6 @@ func _on_timer_timeout():
 #		next_letter = remaining_text.substr(0, 1)
 #		remaining_text = remaining_text.substr(1)
 	
-	label.text += next_letter
 	if remaining_text.is_empty():
 		timer.stop()
 		emit_signal("finished")
