@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dea2t0yg2ykyq"]
+[gd_scene load_steps=14 format=3 uid="uid://dea2t0yg2ykyq"]
 
 [ext_resource type="Texture2D" uid="uid://b62mbglp5riq5" path="res://library/assets/pattern_blueprint.png" id="1_qp0xr"]
 [ext_resource type="Script" path="res://library/scripts/dialog_box.gd" id="1_wdv3x"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://di6ffte540qyj" path="res://library/assets/DialogAsset/TeaksDialog.tres" id="4_3e0tx"]
 [ext_resource type="FontFile" uid="uid://bo2wnft3f8t0y" path="res://library/assets/anime-ace.bold.ttf" id="4_rd0lj"]
 [ext_resource type="Texture2D" uid="uid://cjd5okxikqb6f" path="res://library/assets/minimapIcon_arrowA.png" id="6_h5xh5"]
+[ext_resource type="AudioStream" uid="uid://bu57whr4wahbi" path="res://library/assets/DialogAsset/teaks_voice.wav" id="10_og4st"]
 
 [sub_resource type="Animation" id="Animation_ul0q5"]
 length = 0.001
@@ -63,7 +64,7 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_wdv3x")
 characters = Array[Resource("res://library/scripts/DialogCharacter.gd")]([ExtResource("2_fecd2"), ExtResource("4_3e0tx")])
-messages = "garl Hey Teaks! Where have you been all night long?
+messages = "garl Hey Teaks! Where have you been all night long? I was worried...
 teaks Well... I didn't felt so good so I preferred spending the night somewhere else
 garl Ok, if this made you mode comfortable, that's fine
 garl You are not hiding something from us, don't you?"
@@ -150,10 +151,10 @@ theme_override_font_sizes/font_size = 23
 text = "WHat exactly did you just say to him?``` I do not condone such behaviour to your masters!!"
 autowrap_mode = 2
 
-[node name="TextPrinter" type="Node" parent="TextMargin/Label"]
+[node name="TextPrinter" type="Node" parent="TextMargin/Label" node_paths=PackedStringArray("sound_player")]
 script = ExtResource("3_sg23v")
-letter_delay = 0.04
-pause_chars = Array[String]([",", ".", "?"])
+letters_per_second = 18.44
+sound_player = NodePath("../../../AudioStreamPlayer2D")
 
 [node name="ContinueArrow" type="TextureRect" parent="."]
 layout_mode = 0
@@ -169,4 +170,8 @@ libraries = {
 "": SubResource("AnimationLibrary_2kr1j")
 }
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_og4st")
+
 [connection signal="finished" from="TextMargin/Label/TextPrinter" to="." method="_on_text_printer_finished"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="TextMargin/Label/TextPrinter" method="_on_audio_stream_player_2d_finished"]
