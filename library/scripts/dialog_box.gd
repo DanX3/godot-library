@@ -1,5 +1,7 @@
 extends Control
 
+signal finished
+
 #@export var messages: Array[DialogPair]
 @export var characters: Array[DialogCharacter]
 
@@ -14,6 +16,7 @@ extends Control
 @onready var label = $TextMargin/Label
 @onready var arrow = $ContinueArrow
 @onready var profile = $Pivot/Profile
+@onready var sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var messages_array: Array
 var characters_map: Dictionary
@@ -36,8 +39,10 @@ func _input(event):
 
 func play_next():
 	if messages_array.is_empty():
+		emit_signal("finished")
 		hide()
 		return
+	
 	var line = messages_array.pop_back() as String
 	var first_space_index = line.find(" ")
 	var name = line.substr(0, first_space_index)
@@ -45,6 +50,7 @@ func play_next():
 	var character = characters_map[name]
 	
 	profile.texture = character.picture
+	sound.stream = character.voice
 	printer.play(message)
 	arrow.hide()
 	player.stop()
