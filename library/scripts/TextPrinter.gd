@@ -58,8 +58,3 @@ func _on_timer_timeout():
 		emit_signal("finished")
 		if sound_player:
 			sound_player.playing = false
-
-
-func _on_audio_stream_player_2d_finished():
-	print('finished sound')
-	sound_player.pitch_scale = randf_range(0.5, 1.5)
