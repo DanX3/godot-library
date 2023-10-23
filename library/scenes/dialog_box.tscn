@@ -148,7 +148,7 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("4_rd0lj")
 theme_override_font_sizes/font_size = 23
-text = "WHat exactly did you just say to him?``` I do not condone such behaviour to your masters!!"
+text = "Sample text"
 autowrap_mode = 2
 
 [node name="TextPrinter" type="Node" parent="TextMargin/Label" node_paths=PackedStringArray("sound_player")]
@@ -174,4 +174,3 @@ libraries = {
 stream = ExtResource("10_og4st")
 
 [connection signal="finished" from="TextMargin/Label/TextPrinter" to="." method="_on_text_printer_finished"]
-[connection signal="finished" from="AudioStreamPlayer2D" to="TextMargin/Label/TextPrinter" method="_on_audio_stream_player_2d_finished"]
