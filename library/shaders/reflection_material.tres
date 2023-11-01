@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d02pr2gxrwmsk"]
+
+[ext_resource type="Shader" path="res://library/shaders/reflection.gdshader" id="1_eyqdm"]
+[ext_resource type="Texture2D" uid="uid://dti2gfwoa3ww" path="res://library/assets/noise_256_color.png" id="2_r40q8"]
+
+[resource]
+shader = ExtResource("1_eyqdm")
+shader_parameter/modulate = Color(0.698039, 0.87451, 0.498039, 1)
+shader_parameter/clear_color = Color(0.301961, 0.301961, 0.301961, 1)
+shader_parameter/reflection = 0.32
+shader_parameter/amplitude = 0.0
+shader_parameter/time_scale = 0.575
+shader_parameter/scale = 1.114
+shader_parameter/noise_color = ExtResource("2_r40q8")
