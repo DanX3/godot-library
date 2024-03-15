@@ -1,6 +1,9 @@
 ### Merging tiles together
 montage -background transparent -geometry 210x244+0+0  -tile 16x17 *.png  atlas.png
 
+### Merging animation sprites
+montage -background transparent -tile 8x1 *.png  atlas.png
+
 ### Splitting texture atlas tiles
 convert pickups_copy.png -crop 3x2-0-0@ +repage +adjoin tile-%d.png
 

@@ -1,4 +1,9 @@
-extends Control
+class_name Cursor extends Control
+
+## This class represents a UI cursor
+## add the nodes that should be focused by the cursor to the group "focus"
+## the cursor will try to focus them based on the UI directions with no more setup needed
+## Once selected, the Cursor will emit the event selected(node_name) to react to selection
 
 signal selected(node_name: String)
 
