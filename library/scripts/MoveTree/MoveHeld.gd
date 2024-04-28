@@ -17,18 +17,33 @@ signal started
 signal finished
 
 var valid_timestamp = -1
+var timer: Timer
+
+func _ready():
+	timer = Timer.new()
+	add_child(timer)
+	timer.timeout.connect(func(): _get_root().refresh())
 
 func _unhandled_input(event):
 	for action in actions_required:
 		if not Input.is_action_pressed(action):
 			valid_timestamp = -1
+			if not timer.is_stopped():
+				timer.stop()
 			return
 	valid_timestamp = Time.get_ticks_msec()
+	if timer.is_stopped():
+		timer.start(0.001 * hold_duration_ms)
 
 func is_move_valid() -> bool:
-	print("Checking hold move valid: ", str(valid_timestamp > 0 and Time.get_ticks_msec() - valid_timestamp > hold_duration_ms))
+	#print("Checking hold move valid: ", str(valid_timestamp > 0 and Time.get_ticks_msec() - valid_timestamp > hold_duration_ms))
 	if valid_timestamp < 0:
 		return false
+	
+	for action in actions_required:
+		if not Input.is_action_pressed(action):
+			return false
+		
 	var time_passed_ms = Time.get_ticks_msec() - valid_timestamp
 	if holdType == HoldType.MoreThan:
 		return time_passed_ms >= hold_duration_ms
