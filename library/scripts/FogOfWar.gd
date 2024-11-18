@@ -7,13 +7,14 @@ extends Sprite2D
 @export var lightMask: Texture2D
 
 var fogImage: Image
-var lightImage : Image
+var lightImage: Image
 var last_world_location := Vector2.ZERO
+
 
 func _ready():
 	lightImage = lightMask.get_image()
 	lightImage.resize(sight, sight, Image.INTERPOLATE_BILINEAR)
-	
+
 	fogImage = Image.create(fog_width, fog_height, false, Image.FORMAT_RGBA8)
 	fogImage.fill(Color(0, 0, 0, 0.9))
 	texture = ImageTexture.create_from_image(fogImage)
@@ -22,9 +23,10 @@ func _ready():
 	print(fogScale)
 	material.set_shader_parameter("fogScale", fogScale)
 
+
 func update_fog(world_coords: Vector2):
 	var coords = (world_coords - global_position) - 0.5 * lightImage.get_size()
-	coords = (coords / grid_step).floor() * grid_step  + Vector2(0.5, 0.5) * grid_step;
+	coords = (coords / grid_step).floor() * grid_step + Vector2(0.5, 0.5) * grid_step
 	if coords == last_world_location:
 		return
 	print("cleared fog")

@@ -11,10 +11,12 @@ var walk_dir: Vector2
 var camera_point := Vector2.ZERO
 @onready var pivot = $Pivot
 
+
 func _process(delta):
 	if camera != null:
 		camera_point = camera_distance * walk_dir
 		camera.position = lerp(camera.position, camera_point, delta * camera_reactivity)
+
 
 func _physics_process(delta):
 	var x = Input.get_axis("move_left", "move_right")
@@ -26,6 +28,7 @@ func _physics_process(delta):
 		pivot.scale.x = sign(velocity.x)
 	_manage_anim()
 
+
 func _manage_anim():
 	if moveTree.isPlaying:
 		return
@@ -33,6 +36,7 @@ func _manage_anim():
 		player.play("walk")
 	else:
 		player.play("idle")
+
 
 func _on_move_tree_play_anim(anim_name):
 	player.play(anim_name)

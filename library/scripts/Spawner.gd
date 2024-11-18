@@ -5,10 +5,12 @@ class_name Spawner extends Node2D
 @export var parent_path: String
 @export var rects: Array[Rect2]
 
-var _thresholds : Array[float]
+var _thresholds: Array[float]
+
 
 func _ready():
-	_prepare_thresholds();
+	_prepare_thresholds()
+
 
 func spawn() -> Node:
 	var new_node = node_scene.instantiate()
@@ -20,19 +22,21 @@ func spawn() -> Node:
 	parent.call_deferred("add_child", new_node)
 	return new_node
 
+
 func _get_random_shape():
 	var rand = randf()
 	for i in range(_thresholds.size()):
 		if rand < _thresholds[i]:
 			return rects[i]
 
-# thresholds are used to get a random shape 
+
+# thresholds are used to get a random shape
 # to make their probability linearly dependent on their relative area
 func _prepare_thresholds():
 	var total_area = 0.0
 	for rect in rects:
 		total_area += rect.get_area()
-	
+
 	var relative_areas = []
 	var progression = 0.0
 	for rect in rects:
@@ -40,12 +44,13 @@ func _prepare_thresholds():
 		relative_areas.append(relative_area)
 		progression += relative_area
 		_thresholds.append(progression)
-	
+
 
 # draw shape in editor
 func _process(delta):
 	if Engine.is_editor_hint():
 		queue_redraw()
+
 
 func _draw():
 	if rects != null:

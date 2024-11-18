@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://dea2t0yg2ykyq"]
 
-[ext_resource type="Texture2D" uid="uid://b62mbglp5riq5" path="res://library/assets/pattern_blueprint.png" id="1_qp0xr"]
-[ext_resource type="Script" path="res://library/scripts/dialog_box.gd" id="1_wdv3x"]
+[ext_resource type="Texture2D" uid="uid://8nu0uusfh4mb" path="res://library/assets/pattern_blueprint.png" id="1_qp0xr"]
+[ext_resource type="Script" path="res://library/scripts/DialogBox.gd" id="1_wdv3x"]
 [ext_resource type="Resource" uid="uid://d1cw0cs3r5arx" path="res://library/assets/DialogAsset/GarlDialog.tres" id="2_fecd2"]
-[ext_resource type="Texture2D" uid="uid://ciqfumhnvu4v0" path="res://library/assets/DialogAsset/teaks.png" id="2_rqf3q"]
-[ext_resource type="Texture2D" uid="uid://bjconxijh87p0" path="res://library/assets/panel_woodDetail_blank.png" id="2_toy4g"]
+[ext_resource type="Texture2D" uid="uid://luauwyl61ey3" path="res://library/assets/DialogAsset/teaks.png" id="2_rqf3q"]
+[ext_resource type="Texture2D" uid="uid://cqhhrfqkmlrdo" path="res://library/assets/panel_woodDetail_blank.png" id="2_toy4g"]
 [ext_resource type="Script" path="res://library/scripts/TextPrinter.gd" id="3_sg23v"]
 [ext_resource type="Resource" uid="uid://di6ffte540qyj" path="res://library/assets/DialogAsset/TeaksDialog.tres" id="4_3e0tx"]
-[ext_resource type="FontFile" uid="uid://bo2wnft3f8t0y" path="res://library/assets/anime-ace.bold.ttf" id="4_rd0lj"]
-[ext_resource type="Texture2D" uid="uid://cjd5okxikqb6f" path="res://library/assets/minimapIcon_arrowA.png" id="6_h5xh5"]
-[ext_resource type="AudioStream" uid="uid://bu57whr4wahbi" path="res://library/assets/DialogAsset/teaks_voice.wav" id="10_og4st"]
+[ext_resource type="FontFile" uid="uid://e7f1mf1a172h" path="res://library/assets/anime-ace.bold.ttf" id="4_rd0lj"]
+[ext_resource type="Texture2D" uid="uid://c0vxs8iue7k1" path="res://library/assets/minimapIcon_arrowA.png" id="6_h5xh5"]
+[ext_resource type="AudioStream" uid="uid://bktn72f1uuhcx" path="res://library/assets/DialogAsset/teaks_voice.wav" id="10_og4st"]
 
 [sub_resource type="Animation" id="Animation_ul0q5"]
 length = 0.001

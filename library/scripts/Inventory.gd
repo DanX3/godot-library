@@ -8,6 +8,7 @@ signal used(item: String)
 ## Dictionary<String, int> representing item name and amount held
 var inventory: Dictionary = {}
 
+
 func _ready():
 	add_to_group("persist")
 
@@ -23,15 +24,17 @@ func add(item: String):
 	else:
 		inventory[item] = 1
 
+
 func use(item: String) -> bool:
 	if not inventory.has(item):
 		return false
-	
+
 	inventory[item] -= 1
 	emit_signal("used", item)
 	if inventory[item] == 0:
 		inventory.erase(item)
 	return true
+
 
 func save():
 	return inventory

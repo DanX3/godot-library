@@ -12,7 +12,8 @@ var maxY: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass  # Replace with function body.
+
 
 func _refresh_limits():
 	var p = target.global_position
@@ -20,6 +21,7 @@ func _refresh_limits():
 	minY = min(minY, p.y)
 	maxX = max(maxX, p.x)
 	maxY = max(maxY, p.y)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
