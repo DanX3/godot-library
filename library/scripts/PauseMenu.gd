@@ -4,9 +4,11 @@ extends Control
 func _ready():
 	hide()
 
+
 func _input(event):
 	if Input.is_action_just_pressed("pause"):
 		_set_paused(!get_tree().paused)
+
 
 func _set_paused(paused: bool):
 	get_tree().paused = paused

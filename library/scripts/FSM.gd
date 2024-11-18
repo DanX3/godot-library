@@ -7,13 +7,14 @@ signal exited_state(old_state)
 
 var state = null
 
+
 func set_state(new_state):
 	if new_state == state:
 		return
-		
+
 	if state != null:
 		emit_signal("exited_state", state)
-	
+
 	emit_signal("entered_state", new_state, state)
 	state = new_state
 	if label_debug != null:

@@ -6,7 +6,7 @@ extends Node
 
 class_name Shooter
 
-signal shoot()
+signal shoot
 
 @export var action := ""
 @export var frequency := 10.0
@@ -14,19 +14,22 @@ signal shoot()
 var period := 0.0
 var timePassedSinceBlink = 0
 
+
 func _unhandled_input(event):
 	if Input.is_action_just_pressed(action) and timePassedSinceBlink > period:
 		emit_signal("shoot")
 		timePassedSinceBlink = 0
 
+
 func _ready():
 	period = round(1000.0 / frequency)
+
 
 func _physics_process(delta):
 	timePassedSinceBlink += round(delta * 1000)
 	if not Input.is_action_pressed(action):
 		return
-		
+
 	if timePassedSinceBlink >= period:
 		timePassedSinceBlink -= period
 		emit_signal("shoot")

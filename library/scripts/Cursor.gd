@@ -14,15 +14,18 @@ const DOT_PRODUCT_MIN = 0.75
 var focused_control: WeakRef = weakref(null)
 var scroll_container: WeakRef = weakref(null)
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	if initial_focus != null:
 		call_deferred("focus", initial_focus)
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
 
 ## moves the cursor to the provided control
 ## check_scroll_container by default checks whether to make visible a control inside a scroll container
@@ -37,15 +40,19 @@ func focus(control: Control, check_scroll_container = true):
 		if scroll_container.get_ref() != null:
 			(scroll_container.get_ref() as ScrollContainer).ensure_control_visible(control)
 			call_deferred("focus", control, false)
-	
+
 	var mouse_position = control.global_position + Vector2(0.0, 0.5 * control.size.y)
 	Input.warp_mouse(mouse_position)
 	if tween != null and tween.is_running():
 		tween.stop()
 	tween = get_tree().create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_property(self, "global_position", mouse_position, move_duration)\
-		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	(
+		tween
+		. tween_property(self, "global_position", mouse_position, move_duration)
+		. set_ease(Tween.EASE_OUT)
+		. set_trans(Tween.TRANS_CUBIC)
+	)
 	focused_control = weakref(control)
 
 
@@ -57,20 +64,21 @@ func unfocus():
 func _input(event):
 	if not visible:
 		return
-	
-	if Input.is_action_just_pressed("ui_accept") \
-		and focused_control.get_ref() != null:
+
+	if Input.is_action_just_pressed("ui_accept") and focused_control.get_ref() != null:
 		emit_signal("selected", focused_control.get_ref().name)
 		return
-	
+
 	# interrupt held timer actions
-	if Input.is_action_just_released("ui_down") \
-		or Input.is_action_just_released("ui_up") \
-		or Input.is_action_just_released("ui_left") \
-		or Input.is_action_just_released("ui_right"):
-			$TimerHeld.stop()
-			$TimerHeldTick.stop()
-	
+	if (
+		Input.is_action_just_released("ui_down")
+		or Input.is_action_just_released("ui_up")
+		or Input.is_action_just_released("ui_left")
+		or Input.is_action_just_released("ui_right")
+	):
+		$TimerHeld.stop()
+		$TimerHeldTick.stop()
+
 	var direction = Vector2.ZERO
 	if Input.is_action_just_pressed("ui_down"):
 		direction = Vector2.DOWN
@@ -89,7 +97,7 @@ func _input(event):
 	var control_to_focus = _get_control_in_direction(direction)
 	if control_to_focus != null:
 		focus(control_to_focus)
-	
+
 
 ## this algorithm checks for all the control in group "focus"
 ## with dot product lower than an acceptable threshold and focuses the control
@@ -98,8 +106,10 @@ func _get_control_in_direction(direction: Vector2):
 	var control_to_focus = null
 	var closest_distance = INF
 	for c in get_tree().get_nodes_in_group("focus"):
-		if focused_control.get_ref() != null \
-			and c.get_instance_id() == focused_control.get_ref().get_instance_id():
+		if (
+			focused_control.get_ref() != null
+			and c.get_instance_id() == focused_control.get_ref().get_instance_id()
+		):
 			continue
 		if not c is Control:
 			printerr("Control ", c.name, " is not a Control. Skipping...")
@@ -119,7 +129,7 @@ func _get_control_in_direction(direction: Vector2):
 func _on_timer_held_timeout():
 	_focus_control_in_dir_pressed()
 	$TimerHeldTick.start()
-	
+
 
 func _on_timer_held_tick_timeout():
 	_focus_control_in_dir_pressed()

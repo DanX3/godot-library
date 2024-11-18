@@ -21,11 +21,12 @@ signal finished
 var messages_array: Array
 var characters_map: Dictionary
 
+
 func _ready():
 	messages_array = messages.split("\n", false)
 	# reverse the message order to pop_back the following message instead of pop_front
 	messages_array.reverse()
-	
+
 	# characters map init
 	for char in characters:
 		characters_map[char.id] = char
@@ -42,13 +43,13 @@ func play_next():
 		emit_signal("finished")
 		hide()
 		return
-	
+
 	var line = messages_array.pop_back() as String
 	var first_space_index = line.find(" ")
 	var name = line.substr(0, first_space_index)
 	var message = line.substr(first_space_index + 1)
 	var character = characters_map[name]
-	
+
 	profile.texture = character.picture
 	sound.stream = character.voice
 	printer.play(message)

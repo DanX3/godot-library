@@ -4,9 +4,11 @@ class_name FollowNode extends Node
 @export var reparent := false
 @export var free_delay := 0.0
 
+
 func _ready():
 	if reparent:
 		get_parent().call_deferred("reparent", node_to_follow.get_parent())
+
 
 func _process(delta):
 	if node_to_follow != null:
@@ -16,6 +18,7 @@ func _process(delta):
 		set_process(false)
 	else:
 		get_parent().queue_free()
+
 
 func destroy_after():
 	var timer = Timer.new()
