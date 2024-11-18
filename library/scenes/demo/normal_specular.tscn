@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1gi63ipwlhhx"]
+
+[ext_resource type="Texture2D" uid="uid://dc50ae8ia3yrk" path="res://library/assets/crystal.png" id="1_fbfaa"]
+[ext_resource type="Texture2D" uid="uid://biyjmllebd6yv" path="res://library/assets/crystal_n.png" id="2_dav6u"]
+[ext_resource type="Texture2D" uid="uid://bjqkcanx0x6kg" path="res://library/assets/crystal_s.png" id="3_rcg7o"]
+[ext_resource type="Texture2D" uid="uid://7uxbhuoya8p7" path="res://library/assets/circle.png" id="4_wrvdi"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_826tr"]
+diffuse_texture = ExtResource("1_fbfaa")
+normal_texture = ExtResource("2_dav6u")
+specular_texture = ExtResource("3_rcg7o")
+specular_shininess = 0.61
+
+[sub_resource type="Animation" id="Animation_din51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_voggq"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vbpxf"]
+_data = {
+"RESET": SubResource("Animation_din51"),
+"new_animation": SubResource("Animation_voggq")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Crystal" type="Sprite2D" parent="."]
+position = Vector2(265, 144)
+scale = Vector2(0.12, 0.12)
+texture = SubResource("CanvasTexture_826tr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vbpxf")
+}
+autoplay = "new_animation"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(266, 146)
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D"]
+position = Vector2(0, -228)
+scale = Vector2(2.76562, 2.76562)
+texture = ExtResource("4_wrvdi")
