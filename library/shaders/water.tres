@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bmfqmvf0ejjix"]
+
+[ext_resource type="Shader" path="res://library/shaders/water.gdshader" id="1_mhksl"]
+[ext_resource type="Texture2D" uid="uid://bvpkti4etqwli" path="res://library/assets/Vein 5 - 512x512.png" id="2_dyn3r"]
+[ext_resource type="Texture2D" uid="uid://jq7111hg0pbm" path="res://library/assets/noise_256.png" id="3_pq458"]
+[ext_resource type="Texture2D" uid="uid://d1x72lre5x5no" path="res://library/assets/Craters 2 - 512x512.png" id="4_t3of7"]
+
+[resource]
+shader = ExtResource("1_mhksl")
+shader_parameter/baseColor1 = Color(0.0133883, 0.219956, 0.338566, 1)
+shader_parameter/baseColor2 = Color(0.0923621, 0.431802, 0.557627, 1)
+shader_parameter/speed = Vector2(-0.065, 0.02)
+shader_parameter/scale = Vector2(0.72, 0.59)
+shader_parameter/reflectionsAmount = 0.039
+shader_parameter/reflectionsSpeed = Vector2(-0.031, 0.033)
+shader_parameter/reflectionScale = Vector2(1.77, 1.72)
+shader_parameter/foamAmount = 0.48
+shader_parameter/foamScale = Vector2(1.165, 0.94)
+shader_parameter/foamSpeed = Vector2(-0.03, 0.01)
+shader_parameter/foamColor = Color(0.5168, 0.74784, 0.76, 1)
+shader_parameter/noiseTex = ExtResource("3_pq458")
+shader_parameter/waterNoise = ExtResource("4_t3of7")
+shader_parameter/foamNoise = ExtResource("2_dyn3r")
