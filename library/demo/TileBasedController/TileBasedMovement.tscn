@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://cis7ulfcryj4f"]
+[gd_scene load_steps=13 format=4 uid="uid://cis7ulfcryj4f"]
 
-[ext_resource type="Texture2D" uid="uid://cm2cusocm25e8" path="res://library/assets/mapPack_tilesheet.png" id="1_r6q03"]
+[ext_resource type="Texture2D" uid="uid://iyhc7dh6do2x" path="res://library/assets/mapPack_tilesheet.png" id="1_r6q03"]
 [ext_resource type="Texture2D" uid="uid://d067kbcnt5fih" path="res://library/demo/TileBasedController/HeroFront.tres" id="2_n65ei"]
 [ext_resource type="Script" path="res://library/scripts/TileController.gd" id="2_vebv7"]
 [ext_resource type="Texture2D" uid="uid://8esa426l0epn" path="res://library/demo/TileBasedController/HeroBack.tres" id="4_vq4nn"]
+[ext_resource type="Texture2D" uid="uid://bg1jri1t5h8im" path="res://ignored/assets/minimapIcon_starYellow.png" id="5_2hvms"]
+[ext_resource type="Script" path="res://library/demo/TileBasedController/NPC.gd" id="5_j3jft"]
+[ext_resource type="Texture2D" uid="uid://bhjhg1cgl3xh4" path="res://library/assets/rounded_rect.png" id="7_gkj12"]
+[ext_resource type="Texture2D" uid="uid://dhvlsrpsc7omo" path="res://library/assets/minimapIcon_exclamationYellow.png" id="8_y6n7y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_20afa"]
 texture = ExtResource("1_r6q03")
@@ -219,10 +223,13 @@ sources/1 = SubResource("TileSetAtlasSource_20afa")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwia2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixsqf"]
+size = Vector2(50, 50)
+
 [node name="TileBasedMovement" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAIAAAABAAAAAQABAAAAAAABAAEAAQAGAAEAAAABAAIAAQAEAAAAAAACAAAAAQABAAAAAAACAAEAAQABAAEAAAACAAIAAQAGAAEAAAADAAAAAQACAAAAAAADAAEAAQAGAAEAAAADAAIAAQABAAEAAAAEAAEAAQABAAAAAAAEAAIAAQAGAAEAAAAFAAEAAQAGAAEAAAAFAAIAAQABAAIAAAAGAAEAAQABAAAAAAAGAAIAAQAGAAEAAAAHAAAAAQAAAAAAAAAHAAEAAQAEAAEAAAAHAAIAAQABAAEAAAAIAAAAAQABAAAAAAAIAAEAAQABAAEAAAAIAAIAAQABAAEAAAAJAAAAAQABAAAAAAAJAAEAAQABAAEAAAAJAAIAAQADAAAAAAAKAAAAAQABAAAAAAAKAAEAAQABAAEAAAAKAAIAAQABAAIAAAALAAAAAQABAAAAAAALAAEAAQABAAEAAAALAAIAAQABAAIAAAAMAAAAAQACAAAAAAAMAAEAAQACAAEAAAAMAAIAAQACAAIAAAABAAMAAQAAAAIAAAACAAMAAQABAAIAAAADAAMAAQAGAAEAAAAHAAMAAQABAAIAAAAIAAMAAQABAAIAAAAJAAMAAQACAAIAAAAEAAMAAQACAAMAAAAGAAMAAQAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAIAAAABAAAAAQABAAAAAAABAAEAAQABAAEAAAABAAIAAQAEAAAAAAACAAAAAQABAAAAAAACAAEAAQABAAEAAAACAAIAAQABAAEAAAADAAAAAQABAAAAAAADAAEAAQABAAEAAAADAAIAAQABAAEAAAAEAAEAAQABAAEAAAAEAAIAAQADAAAAAAAFAAEAAQABAAEAAAAFAAIAAQABAAIAAAAGAAEAAQABAAEAAAAGAAIAAQAEAAAAAAAHAAAAAQABAAEAAAAHAAEAAQABAAEAAAAHAAIAAQABAAEAAAAIAAAAAQADAAEAAAAIAAEAAQABAAEAAAAIAAIAAQABAAEAAAAJAAAAAQABAAAAAAAJAAEAAQABAAEAAAAJAAIAAQADAAAAAAAKAAAAAQABAAAAAAAKAAEAAQABAAEAAAAKAAIAAQABAAIAAAALAAAAAQABAAAAAAALAAEAAQABAAEAAAALAAIAAQABAAIAAAAMAAAAAQACAAAAAAAMAAEAAQACAAEAAAAMAAIAAQACAAIAAAABAAMAAQAAAAIAAAACAAMAAQABAAIAAAADAAMAAQABAAIAAAAHAAMAAQABAAIAAAAIAAMAAQABAAIAAAAJAAMAAQACAAIAAAAEAAMAAQACAAMAAAAGAAMAAQAAAAMAAAAEAAAAAQAEAAEAAAAFAAAAAQABAAEAAAAGAAAAAQABAAEAAAAEAP//AQAAAAAAAAAFAP//AQABAAAAAAAGAP//AQABAAAAAAAHAP//AQABAAAAAAAIAP//AQACAAAAAAA=")
 tile_set = SubResource("TileSet_08qw8")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -247,3 +254,24 @@ target_position = Vector2(48, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_rwia2")
 disabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." node_paths=PackedStringArray("baloon")]
+position = Vector2(160, 160)
+script = ExtResource("5_j3jft")
+baloon = NodePath("RoundedRect")
+
+[node name="MinimapIconStarYellow" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("5_2hvms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ixsqf")
+
+[node name="RoundedRect" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(15, -18)
+scale = Vector2(0.0799019, 0.0799019)
+texture = ExtResource("7_gkj12")
+
+[node name="MinimapIconExclamationYellow" type="Sprite2D" parent="StaticBody2D/RoundedRect"]
+scale = Vector2(10.303, 10.303)
+texture = ExtResource("8_y6n7y")

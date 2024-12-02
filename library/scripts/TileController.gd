@@ -1,17 +1,29 @@
 extends CharacterBody2D
 
+## This class represent the player controller for a tile based movement
+## The player moves by tweening from one cell position to the other.
+## The player correctly calls the methods `on_player_face` and `on_player_leave`
+## when starts looking at a colliding node and when it looks away respectively
+## This is used to display some sort of feedback that the player is able to interact with a node
+
 @onready var raycast = $RayCast2D
 @onready var pivot = $Sprite2D
 
+# speed of the tween movement
 const SPEED = 200.0
+# set the tile size. Since the game will be structured around this, it is a const
 const tileSize = 64
+## If pressed quickly, less than this time duration,
+## the player only changes facing direction without actually moving
 @export var moveDelayMs := 100
 @export var frontSprite: Texture2D
 @export var backSprite: Texture2D
-var walking = false
+var walking := false
 var timer: Timer
 var lastDir := Vector2.ZERO
 var facingDir := Vector2.RIGHT
+# the node the player is looking at, namely what collides with the raycast
+var facingNode: Node = null
 
 
 func _ready() -> void:
@@ -41,6 +53,7 @@ func _physics_process(_delta: float) -> void:
 		# if stopped pressing before the timer runs out
 		# just change facing direction
 		if not timer.is_stopped():
+			_leave_facing_node()
 			facingDir = lastDir
 			update_graphics(facingDir)
 			timer.stop()
@@ -51,6 +64,7 @@ func _physics_process(_delta: float) -> void:
 	# prevent walking against a wall, just change facing direction
 	if not can_walk(selectedDir):
 		facingDir = selectedDir
+		_face_node()
 		update_graphics(facingDir)
 		return
 
@@ -74,12 +88,17 @@ func _on_timer_timeout():
 
 
 func walk(dir: Vector2):
+	_leave_facing_node()
 	walking = true
 	facingDir = dir
 	update_graphics(facingDir)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", position + dir * tileSize, tileSize / SPEED)
-	tween.finished.connect(func(): walking = false)
+	tween.finished.connect(
+		func():
+			walking = false
+			_face_node()
+	)
 
 
 func can_walk(dir: Vector2) -> bool:
@@ -98,3 +117,18 @@ func update_graphics(dir: Vector2):
 		$Sprite2D.texture = backSprite
 	else:
 		$Sprite2D.texture = frontSprite
+
+
+func _face_node():
+	var collider = raycast.get_collider()
+	if collider == facingNode:
+		return
+	if collider != null and collider.has_method("on_player_face"):
+		collider.on_player_face(self)
+		facingNode = collider
+
+
+func _leave_facing_node():
+	if facingNode != null:
+		facingNode.on_player_leave(self)
+	facingNode = null
