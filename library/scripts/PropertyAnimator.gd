@@ -1,4 +1,4 @@
-extends Node
+class_name PropertyAnimator extends Node
 
 @export var property: String = ""
 @export var speed = 1.0
