@@ -13,8 +13,8 @@ void fragment() {
 	float noise = texture(noise_tex, fract(scale * UV)).r;
 	float progress_zoomed =  0.5 * zoom // starting point
 		// slowed down progress rate
-		+ ((1.0 - zoom) / 1.0) * (1.0 - progress); 
-	
+		+ ((1.0 - zoom) / 1.0) * (1.0 - progress);
+
 	float progress_noised = progress_zoomed + noise;
 	vec4 tex = texture(TEXTURE, UV);
 	float noise_alpha = tex.a * step(1.0, progress_noised);
