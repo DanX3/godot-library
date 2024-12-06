@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://cheplynfy56ub" path="res://library/assets/terrains.tres" id="1_2ig2h"]
 [ext_resource type="Script" path="res://ignored/scripts/topdown_scene.gd" id="1_d18ba"]
-[ext_resource type="PackedScene" uid="uid://gi1ggya6id27" path="res://library/scenes/demo/topdown_player.tscn" id="2_tkmdr"]
+[ext_resource type="PackedScene" uid="uid://gi1ggya6id27" path="res://library/demo/TopDown/topdown_player.tscn" id="2_tkmdr"]
 [ext_resource type="Script" path="res://library/scripts/MoveTree/MoveTree.gd" id="4_u7f2l"]
 [ext_resource type="Script" path="res://library/scripts/MoveTree/MovePressed.gd" id="5_6874i"]
 [ext_resource type="Script" path="res://library/scripts/MoveTree/MoveHeld.gd" id="6_hpsc6"]
