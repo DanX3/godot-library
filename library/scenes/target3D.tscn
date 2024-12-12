@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://baa6155yrjfic"]
+
+[ext_resource type="Script" path="res://library/scripts/Target3D.gd" id="1_h7qim"]
+[ext_resource type="Texture2D" uid="uid://cm68xqngr4ggp" path="res://library/assets/arrowBeige_right.png" id="2_mhiw0"]
+[ext_resource type="Texture2D" uid="uid://b5iwc3x0ap5rk" path="res://library/assets/circle_solid.png" id="3_b4746"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kiwdy"]
+radius = 1.06162
+
+[node name="Target" type="Area3D"]
+script = ExtResource("1_h7qim")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_kiwdy")
+disabled = true
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ArrowOrigin" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Arrow" type="TextureRect" parent="CanvasLayer/ArrowOrigin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -285.587
+offset_right = 41.0
+offset_bottom = -234.587
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.57079
+pivot_offset = Vector2(30.1299, 26.1324)
+texture = ExtResource("2_mhiw0")
+
+[node name="Point" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(1, 0.545098, 0.298039, 1)
+offset_left = -62.0
+offset_top = -62.0
+offset_right = 66.0
+offset_bottom = 66.0
+scale = Vector2(0.41, 0.41)
+pivot_offset = Vector2(62, 62)
+texture = ExtResource("3_b4746")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

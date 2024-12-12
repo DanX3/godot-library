@@ -14,7 +14,7 @@ func _process(delta):
 	pass
 
 
-const MOUSE_SENSITIVITY = 0.01
+const MOUSE_SENSITIVITY = 0.005
 
 
 func _input(event):
