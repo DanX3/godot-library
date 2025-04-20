@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4povdaefkehl"]
 
-[ext_resource type="Script" path="res://library/scripts/Minimap.gd" id="1_08mnu"]
+[ext_resource type="Script" uid="uid://cvejv3jr7mp21" path="res://library/scripts/Minimap.gd" id="1_08mnu"]
 [ext_resource type="Texture2D" uid="uid://b62mbglp5riq5" path="res://library/assets/pattern_blueprint.png" id="1_i60pi"]
 [ext_resource type="Texture2D" uid="uid://bjconxijh87p0" path="res://library/assets/panel_woodDetail_blank.png" id="2_7csbq"]
 [ext_resource type="Texture2D" uid="uid://cjd5okxikqb6f" path="res://library/assets/minimapIcon_arrowA.png" id="4_xeerj"]

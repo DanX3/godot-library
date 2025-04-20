@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://c1gi63ipwlhhx"]
 
-[ext_resource type="Texture2D" uid="uid://dc50ae8ia3yrk" path="res://library/assets/crystal.png" id="1_fbfaa"]
-[ext_resource type="Texture2D" uid="uid://biyjmllebd6yv" path="res://library/assets/crystal_n.png" id="2_dav6u"]
-[ext_resource type="Texture2D" uid="uid://bjqkcanx0x6kg" path="res://library/assets/crystal_s.png" id="3_rcg7o"]
-[ext_resource type="Texture2D" uid="uid://7uxbhuoya8p7" path="res://library/assets/circle.png" id="4_wrvdi"]
+[ext_resource type="Texture2D" uid="uid://d1gncy3o82elt" path="res://library/assets/crystal.png" id="1_fbfaa"]
+[ext_resource type="Texture2D" uid="uid://dkx3dmbecbf4q" path="res://library/assets/crystal_n.png" id="2_dav6u"]
+[ext_resource type="Texture2D" uid="uid://deqpea8hpauao" path="res://library/assets/crystal_s.png" id="3_rcg7o"]
+[ext_resource type="Texture2D" uid="uid://butefgaxk5gu3" path="res://library/assets/circle.png" id="4_wrvdi"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_826tr"]
 diffuse_texture = ExtResource("1_fbfaa")
@@ -45,8 +45,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vbpxf"]
 _data = {
-"RESET": SubResource("Animation_din51"),
-"new_animation": SubResource("Animation_voggq")
+&"RESET": SubResource("Animation_din51"),
+&"new_animation": SubResource("Animation_voggq")
 }
 
 [node name="Node2D" type="Node2D"]

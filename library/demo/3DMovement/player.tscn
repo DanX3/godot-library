@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cg78gwjd66ce"]
 
-[ext_resource type="Script" path="res://library/scripts/Player3rdPerson.gd" id="1_5lskk"]
-[ext_resource type="Script" path="res://library/scripts/Camera3rdPerson.gd" id="2_83l2v"]
+[ext_resource type="Script" uid="uid://cn4godd237hjx" path="res://library/scripts/Player3rdPerson.gd" id="1_5lskk"]
+[ext_resource type="Script" uid="uid://d0b0w0cfaj3wp" path="res://library/scripts/Camera3rdPerson.gd" id="2_83l2v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1xr57"]
 friction = 0.21

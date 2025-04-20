@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://du1hddv5kx71a"]
 
-[ext_resource type="Script" path="res://library/demo/SaveLoad/game_scene.gd" id="1_27mrf"]
+[ext_resource type="Script" uid="uid://c1kwj3s18x8ud" path="res://library/demo/SaveLoad/game_scene.gd" id="1_27mrf"]
 [ext_resource type="Texture2D" uid="uid://b5iwc3x0ap5rk" path="res://library/assets/circle_solid.png" id="1_qplds"]
 [ext_resource type="Resource" uid="uid://k1fkm6iai6qb" path="res://library/demo/SaveLoad/Custom1.tres" id="2_eyu04"]
-[ext_resource type="Script" path="res://library/scripts/CustomResource.gd" id="2_i0js5"]
-[ext_resource type="Script" path="res://library/demo/SaveLoad/CircleColor.gd" id="3_gan5e"]
+[ext_resource type="Script" uid="uid://wmc1wpabid8a" path="res://library/scripts/CustomResource.gd" id="2_i0js5"]
+[ext_resource type="Script" uid="uid://i0e4ycm1375s" path="res://library/demo/SaveLoad/CircleColor.gd" id="3_gan5e"]
 [ext_resource type="Resource" uid="uid://dqlb4343tw4ty" path="res://library/demo/SaveLoad/Custom2.tres" id="4_qyt1b"]
 
 [node name="GameScene" type="Node2D" groups=["SaveLoad"]]

@@ -1,11 +1,10 @@
 [gd_scene load_steps=10 format=4 uid="uid://cis7ulfcryj4f"]
 
-[ext_resource type="Texture2D" uid="uid://cm2cusocm25e8" path="res://library/assets/mapPack_tilesheet.png" id="1_r6q03"]
-[ext_resource type="Shader" path="res://library/shaders/card.gdshader" id="5_nu3k8"]
+[ext_resource type="Texture2D" uid="uid://iyhc7dh6do2x" path="res://library/assets/mapPack_tilesheet.png" id="1_r6q03"]
+[ext_resource type="Shader" uid="uid://cyjjuyn4idsvs" path="res://library/shaders/card.gdshader" id="5_nu3k8"]
 [ext_resource type="Texture2D" uid="uid://bf7wf2o72hpqk" path="res://icon.svg" id="6_bbd11"]
-[ext_resource type="Script" path="res://library/scripts/CardEffect.gd" id="7_p56w0"]
-[ext_resource type="Texture2D" uid="uid://dc50ae8ia3yrk" path="res://library/assets/crystal.png" id="8_60kiw"]
-[ext_resource type="Script" path="res://library/scripts/SpinningWheel.gd" id="9_5tc8a"]
+[ext_resource type="Texture2D" uid="uid://d1gncy3o82elt" path="res://library/assets/crystal.png" id="8_60kiw"]
+[ext_resource type="Script" uid="uid://df38e801c30pk" path="res://library/scripts/SpinningWheel.gd" id="9_5tc8a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_20afa"]
 texture = ExtResource("1_r6q03")
@@ -221,11 +220,11 @@ sources/1 = SubResource("TileSetAtlasSource_20afa")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g02f5"]
 shader = ExtResource("5_nu3k8")
-shader_parameter/dir = Vector2(0.805, 0)
-shader_parameter/amount = -20.0
+shader_parameter/speed = 0.0
+shader_parameter/shadowAmount = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixsqf"]
-size = Vector2(50, 50)
+[sub_resource type="Resource" id="Resource_yq54d"]
+metadata/__load_path__ = "res://library/scripts/CardEffect.gd"
 
 [node name="TileBasedMovement" type="Node2D"]
 
@@ -238,7 +237,7 @@ material = SubResource("ShaderMaterial_g02f5")
 position = Vector2(35, 74)
 scale = Vector2(0.640625, 0.998187)
 texture = ExtResource("6_bbd11")
-script = ExtResource("7_p56w0")
+script = SubResource("Resource_yq54d")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

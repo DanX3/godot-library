@@ -1,11 +1,11 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ujyc3wg28fbn"]
 
-[ext_resource type="Shader" path="res://library/shaders/overlay.gdshader" id="1_8tofn"]
-[ext_resource type="Texture2D" uid="uid://d0xl34225dqm4" path="res://library/assets/overlay_tex.png" id="2_ouavx"]
+[ext_resource type="Shader" uid="uid://cn7qcnvc3n8en" path="res://library/shaders/overlay.gdshader" id="1_8tofn"]
+[ext_resource type="Texture2D" uid="uid://b2ut40xb3538" path="res://library/assets/overlay_tex.png" id="2_ouavx"]
 
 [resource]
 shader = ExtResource("1_8tofn")
 shader_parameter/dir = Vector2(0, -4)
-shader_parameter/scale = Vector2(10, 5)
-shader_parameter/modulate = Color(0.706817, 0, 0.1294, 1)
 shader_parameter/overlay = ExtResource("2_ouavx")
+shader_parameter/scale = Vector2(10, 5)
+shader_parameter/modulate = Color(0.71, 0, 0.130167, 1)

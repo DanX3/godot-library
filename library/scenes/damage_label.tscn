@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cehulgcqcl7x7"]
 
-[ext_resource type="Script" path="res://library/scripts/DamageLabel.gd" id="1_pagy7"]
+[ext_resource type="Script" uid="uid://6uau3a17htx0" path="res://library/scripts/DamageLabel.gd" id="1_pagy7"]
 [ext_resource type="FontFile" uid="uid://bo2wnft3f8t0y" path="res://library/assets/anime-ace.bold.ttf" id="2_v6aca"]
 
 [sub_resource type="Animation" id="Animation_daw5o"]
@@ -49,8 +49,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kvsyb"]
 _data = {
-"RESET": SubResource("Animation_daw5o"),
-"shrink": SubResource("Animation_kdopq")
+&"RESET": SubResource("Animation_daw5o"),
+&"shrink": SubResource("Animation_kdopq")
 }
 
 [sub_resource type="FontVariation" id="FontVariation_m7sy2"]

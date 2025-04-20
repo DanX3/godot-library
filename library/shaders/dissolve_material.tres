@@ -1,13 +1,24 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://31vb65it0lqp"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://31vb65it0lqp"]
 
-[ext_resource type="Shader" path="res://library/shaders/dissolve.gdshader" id="1_u1rwa"]
-[ext_resource type="Texture2D" uid="uid://b2gre75ndo7eb" path="res://library/assets/noise_256.png" id="2_wcnrj"]
+[ext_resource type="Shader" uid="uid://cb2s5fdk1eer0" path="res://library/shaders/dissolve.gdshader" id="1_u1rwa"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qf74l"]
+noise_type = 2
+frequency = 0.0352
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_diuxy"]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_qf74l")
 
 [resource]
 shader = ExtResource("1_u1rwa")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_diuxy")
 shader_parameter/progress = 0.0
 shader_parameter/color = Color(0.972549, 0.635294, 1, 1)
-shader_parameter/thickness = 0.048
+shader_parameter/thickness = 0.064
 shader_parameter/scale = Vector2(2, 2)
-shader_parameter/zoom = 0.252
-shader_parameter/noise_tex = ExtResource("2_wcnrj")
+shader_parameter/zoom = 0.0

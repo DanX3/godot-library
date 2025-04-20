@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnwqrxeihhk1"]
 
-[ext_resource type="Script" path="res://library/scripts/Cursor.gd" id="1_pciqk"]
+[ext_resource type="Script" uid="uid://dl4s6ffhbpjrt" path="res://library/scripts/Cursor.gd" id="1_pciqk"]
 [ext_resource type="Texture2D" uid="uid://cm68xqngr4ggp" path="res://library/assets/arrowBeige_right.png" id="2_mhuxe"]
 
 [sub_resource type="Animation" id="Animation_bc8q8"]
@@ -36,8 +36,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u633h"]
 _data = {
-"RESET": SubResource("Animation_bc8q8"),
-"cursor_wave": SubResource("Animation_l6usn")
+&"RESET": SubResource("Animation_bc8q8"),
+&"cursor_wave": SubResource("Animation_l6usn")
 }
 
 [node name="Cursor" type="Control"]

@@ -16,15 +16,13 @@ curve = SubResource("Curve_jw7i1")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vtuhn"]
 lifetime_randomness = 0.64
+particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(75, 75, 1)
-particle_flag_disable_z = true
-direction = Vector3(0, 0, 0)
-gravity = Vector3(0, -98, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
 angle_min = -720.0
 angle_max = 720.0
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -98, 0)
 scale_min = 2.0
 scale_max = 10.0
 scale_curve = SubResource("CurveTexture_itoho")

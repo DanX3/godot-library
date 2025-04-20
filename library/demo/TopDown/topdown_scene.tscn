@@ -1,11 +1,11 @@
 [gd_scene load_steps=28 format=3 uid="uid://3n4x21vpt0ue"]
 
 [ext_resource type="TileSet" uid="uid://cheplynfy56ub" path="res://library/assets/terrains.tres" id="1_2ig2h"]
-[ext_resource type="Script" path="res://ignored/scripts/topdown_scene.gd" id="1_d18ba"]
+[ext_resource type="Script" uid="uid://dl2bqqe0evvnq" path="res://ignored/scripts/topdown_scene.gd" id="1_d18ba"]
 [ext_resource type="PackedScene" uid="uid://gi1ggya6id27" path="res://library/demo/TopDown/topdown_player.tscn" id="2_tkmdr"]
-[ext_resource type="Script" path="res://library/scripts/MoveTree/MoveTree.gd" id="4_u7f2l"]
-[ext_resource type="Script" path="res://library/scripts/MoveTree/MovePressed.gd" id="5_6874i"]
-[ext_resource type="Script" path="res://library/scripts/MoveTree/MoveHeld.gd" id="6_hpsc6"]
+[ext_resource type="Script" uid="uid://b3wl46rpd4kpx" path="res://library/scripts/MoveTree/MoveTree.gd" id="4_u7f2l"]
+[ext_resource type="Script" uid="uid://cjeajra37kikp" path="res://library/scripts/MoveTree/MovePressed.gd" id="5_6874i"]
+[ext_resource type="Script" uid="uid://brkvomnfshn6u" path="res://library/scripts/MoveTree/MoveHeld.gd" id="6_hpsc6"]
 [ext_resource type="Texture2D" uid="uid://dnnhbjtyakhnb" path="res://library/assets/knight.png" id="7_0qxjn"]
 [ext_resource type="PackedScene" uid="uid://k1c8mpc8dxyi" path="res://library/scenes/hurtbox.tscn" id="7_6f2is"]
 
@@ -639,20 +639,20 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sdtmn"]
 _data = {
-"LLP": SubResource("Animation_yyu32"),
-"PPL": SubResource("Animation_wts7f"),
-"RESET": SubResource("Animation_uhdtd"),
-"hold": SubResource("Animation_nr4oe"),
-"hold2": SubResource("Animation_6etno"),
-"idle": SubResource("Animation_8p1qu"),
-"light1": SubResource("Animation_udjlq"),
-"light2": SubResource("Animation_g52ei"),
-"light3": SubResource("Animation_4114p"),
-"lightPower": SubResource("Animation_7wbs4"),
-"power1": SubResource("Animation_ku0cg"),
-"power2": SubResource("Animation_55t83"),
-"power3": SubResource("Animation_o5mop"),
-"walk": SubResource("Animation_eupr2")
+&"LLP": SubResource("Animation_yyu32"),
+&"PPL": SubResource("Animation_wts7f"),
+&"RESET": SubResource("Animation_uhdtd"),
+&"hold": SubResource("Animation_nr4oe"),
+&"hold2": SubResource("Animation_6etno"),
+&"idle": SubResource("Animation_8p1qu"),
+&"light1": SubResource("Animation_udjlq"),
+&"light2": SubResource("Animation_g52ei"),
+&"light3": SubResource("Animation_4114p"),
+&"lightPower": SubResource("Animation_7wbs4"),
+&"power1": SubResource("Animation_ku0cg"),
+&"power2": SubResource("Animation_55t83"),
+&"power3": SubResource("Animation_o5mop"),
+&"walk": SubResource("Animation_eupr2")
 }
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_6mjlu"]

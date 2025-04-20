@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgd26nbo1bbpk"]
 
-[ext_resource type="Script" path="res://library/scripts/PlayerSidescroller.gd" id="1_g116j"]
+[ext_resource type="Script" uid="uid://db3adsn27wr84" path="res://library/scripts/PlayerSidescroller.gd" id="1_g116j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v18hc"]
 radius = 25.0

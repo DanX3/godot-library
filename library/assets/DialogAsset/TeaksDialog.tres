@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogCharacter" load_steps=4 format=3 uid="uid://di6ffte540qyj"]
 
-[ext_resource type="Script" path="res://library/scripts/DialogCharacter.gd" id="1_5dxq2"]
+[ext_resource type="Script" uid="uid://bqwben6l1t6wo" path="res://library/scripts/DialogCharacter.gd" id="1_5dxq2"]
 [ext_resource type="Texture2D" uid="uid://ciqfumhnvu4v0" path="res://library/assets/DialogAsset/teaks.png" id="1_80nv4"]
 [ext_resource type="AudioStream" uid="uid://bu57whr4wahbi" path="res://library/assets/DialogAsset/teaks_voice.wav" id="3_llugu"]
 

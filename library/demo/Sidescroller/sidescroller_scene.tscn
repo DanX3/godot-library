@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckhfvsq8uvrth"]
 
-[ext_resource type="Script" path="res://library/demo/Sidescroller/sidescroller_scene.gd" id="1_dnb06"]
+[ext_resource type="Script" uid="uid://c3bnq1ku2ew2n" path="res://library/demo/Sidescroller/sidescroller_scene.gd" id="1_dnb06"]
 [ext_resource type="TileSet" uid="uid://cheplynfy56ub" path="res://library/assets/terrains.tres" id="1_xrrxv"]
 [ext_resource type="PackedScene" uid="uid://bgd26nbo1bbpk" path="res://library/demo/Sidescroller/sidescroller_player.tscn" id="2_sowyc"]
 [ext_resource type="PackedScene" uid="uid://bnqagctpgww5k" path="res://library/scenes/pause_menu.tscn" id="3_3xyig"]
