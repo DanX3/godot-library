@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4nvx8gn4jvau"]
+
+[ext_resource type="Script" uid="uid://b7jidg4a0er25" path="res://library/demo/ClickDemo/click_demo.gd" id="1_d4rtm"]
+
+[node name="ClickDemo" type="Node2D"]
+script = ExtResource("1_d4rtm")

@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://5jegkm6omold"]
+
+[ext_resource type="Texture2D" uid="uid://y3tldkif5tfa" path="res://library/assets/Particles/bar.png" id="1_dqlnp"]
+
+[sub_resource type="Curve" id="Curve_qmhyl"]
+_data = [Vector2(0.753927, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -11.1982, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_oolfb"]
+width = 64
+curve = SubResource("Curve_qmhyl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cbojd"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 100, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 183.78
+initial_velocity_max = 622.38
+gravity = Vector3(0, 0, 0)
+damping_min = 79.762
+damping_max = 100.0
+scale_curve = SubResource("CurveTexture_oolfb")
+color = Color(1, 0.401129, 0.152337, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.02
+
+[sub_resource type="Curve" id="Curve_nghha"]
+_data = [Vector2(0.753927, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -11.1982, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e6dc5"]
+width = 64
+curve = SubResource("Curve_nghha")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dqlnp"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(120, 110, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 474.26
+initial_velocity_max = 912.86
+gravity = Vector3(0, 0, 0)
+damping_min = 79.762
+damping_max = 100.0
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_e6dc5")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
+[node name="PowerUp" type="Node2D"]
+
+[node name="ColorLines" type="GPUParticles2D" parent="."]
+amount = 12
+texture = ExtResource("1_dqlnp")
+lifetime = 0.5
+randomness = 0.45
+process_material = SubResource("ParticleProcessMaterial_cbojd")
+
+[node name="WhiteLines" type="GPUParticles2D" parent="."]
+texture = ExtResource("1_dqlnp")
+lifetime = 0.3
+randomness = 0.45
+process_material = SubResource("ParticleProcessMaterial_dqlnp")

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://btqtsnyiecvsd"]
+
+[ext_resource type="Texture2D" uid="uid://7q4oq75narc" path="res://library/assets/Particles/star.png" id="1_lek01"]
+
+[sub_resource type="Curve" id="Curve_ei2iq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pyehn"]
+curve = SubResource("Curve_ei2iq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ti7qp"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 87.36
+gravity = Vector3(0, -100, 0)
+scale_min = 0.1
+scale_curve = SubResource("CurveTexture_pyehn")
+color = Color(0.639263, 0.994583, 1, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.07
+
+[node name="Stars" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 16
+texture = ExtResource("1_lek01")
+process_material = SubResource("ParticleProcessMaterial_ti7qp")
