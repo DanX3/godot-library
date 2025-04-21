@@ -26,3 +26,15 @@ static func get_tile_at(tilemap: TileMap, global_pos: Vector2, layer: int) -> Ti
 	var local_pos = tilemap.to_local(global_pos)
 	var coords = tilemap.local_to_map(local_pos)
 	return tilemap.get_cell_tile_data(layer, coords)
+
+static func spawn_child(parent: Node, scene: PackedScene, pos: Vector2) -> Node:
+	var childScene = scene.instantiate()
+	parent.add_child(childScene)
+	childScene.global_position = pos
+	return childScene
+
+static func spawn_child_3d(parent: Node3D, scene: PackedScene, pos: Vector3) -> Node3D:
+	var childScene = scene.instantiate()
+	parent.add_child(childScene)
+	childScene.global_position = pos
+	return childScene

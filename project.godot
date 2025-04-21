@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Library"
-run/main_scene="res://library/demo/3DMovement/main.tscn"
+run/main_scene="uid://d4nvx8gn4jvau"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://icon.svg"
@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 
 UtilsAutoload="*res://library/scripts/Utils.gd"
 Singleton="*res://library/scripts/Singleton.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [filesystem]
 

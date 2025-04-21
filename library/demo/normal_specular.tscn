@@ -58,7 +58,7 @@ texture = SubResource("CanvasTexture_826tr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_vbpxf")
+&"": SubResource("AnimationLibrary_vbpxf")
 }
 autoplay = "new_animation"
 
