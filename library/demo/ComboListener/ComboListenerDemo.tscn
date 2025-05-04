@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://deu7g07bdhfx3"]
+
+[ext_resource type="Script" uid="uid://dlyl3m1pvcr02" path="res://library/demo/ComboListener/ComboListenerDemo.gd" id="1_odqeq"]
+[ext_resource type="Script" uid="uid://c2ll2xgr1gcrv" path="res://library/scripts/ComboListener.gd" id="2_xp3c2"]
+
+[node name="InputListenerDemo" type="Node2D"]
+script = ExtResource("1_odqeq")
+
+[node name="InputListener" type="Node" parent="."]
+script = ExtResource("2_xp3c2")
+actions = Array[String](["light", "power"])
+long_press_ms = 500
+metadata/_custom_type_script = "uid://c2ll2xgr1gcrv"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -84.0
+offset_right = 156.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBox1" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBox1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Listener Action:"
+
+[node name="Panel" type="Panel" parent="CanvasLayer/VBoxContainer/HBox1"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ListenAction" type="Label" parent="CanvasLayer/VBoxContainer/HBox1/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "..."
+horizontal_alignment = 1
+
+[node name="HBox2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBox2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Consumed Action:"
+
+[node name="Panel" type="Panel" parent="CanvasLayer/VBoxContainer/HBox2"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ConsumedAction" type="Label" parent="CanvasLayer/VBoxContainer/HBox2/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "..."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Listen" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Listen
+"
+
+[node name="Consume" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Consume"
+
+[connection signal="changed_action" from="InputListener" to="." method="_on_input_listener_changed_action"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/Listen" to="." method="_on_listen_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/Consume" to="." method="_on_consume_pressed"]
