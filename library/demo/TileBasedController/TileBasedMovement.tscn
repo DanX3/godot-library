@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://cis7ulfcryj4f"]
+[gd_scene load_steps=9 format=4 uid="uid://cis7ulfcryj4f"]
 
 [ext_resource type="Texture2D" uid="uid://cskperfnr5ej" path="res://library/assets/grass.png" id="1_yq54d"]
 [ext_resource type="Shader" uid="uid://cyjjuyn4idsvs" path="res://library/shaders/card.gdshader" id="5_nu3k8"]
 [ext_resource type="Texture2D" uid="uid://bf7wf2o72hpqk" path="res://icon.svg" id="6_bbd11"]
-[ext_resource type="PackedScene" uid="uid://dmuvw1uutbupm" path="res://library/scenes/smear.tscn" id="6_hxupy"]
 [ext_resource type="Texture2D" uid="uid://d1gncy3o82elt" path="res://library/assets/crystal.png" id="8_60kiw"]
 [ext_resource type="Script" uid="uid://df38e801c30pk" path="res://library/scripts/SpinningWheel.gd" id="9_5tc8a"]
 
@@ -155,10 +154,6 @@ shader = ExtResource("5_nu3k8")
 shader_parameter/speed = 0.0
 shader_parameter/shadowAmount = 0.0
 
-[sub_resource type="Curve" id="Curve_hxupy"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
 [node name="TileBasedMovement" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -181,16 +176,3 @@ texture = ExtResource("8_60kiw")
 expand_mode = 1
 script = ExtResource("9_5tc8a")
 spin_duration = 0.5
-
-[node name="Smear" parent="." node_paths=PackedStringArray("line") instance=ExtResource("6_hxupy")]
-position = Vector2(645, 249)
-line = NodePath("../Line2D")
-duration_ms = 1000
-min_distance = 2.0
-
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(645, 249)
-width = 100.0
-width_curve = SubResource("Curve_hxupy")
-default_color = Color(1, 0.434818, 0.0398548, 1)
-antialiased = true
