@@ -10,7 +10,3 @@ func impact(world_pos: Vector2) -> void:
 	var viewport_coords = p / texture.get_viewport_rect().size
 	texture.material.set_shader_parameter("impact_position", viewport_coords)
 	player.play("impact")
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
-		impact(event.global_position)
