@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://3n4x21vpt0ue"]
+[gd_scene load_steps=6 format=3 uid="uid://3n4x21vpt0ue"]
 
 [ext_resource type="TileSet" uid="uid://cheplynfy56ub" path="res://library/assets/terrains.tres" id="1_2ig2h"]
 [ext_resource type="Script" uid="uid://dl2bqqe0evvnq" path="res://ignored/scripts/topdown_scene.gd" id="1_d18ba"]
-[ext_resource type="PackedScene" uid="uid://ttt8o22ple3f" path="res://ignored/scenes/test_IK.tscn" id="3_ebi3j"]
+[ext_resource type="PackedScene" uid="uid://ttt8o22ple3f" path="res://library/scenes/MannequinCharacter.tscn" id="3_ebi3j"]
+[ext_resource type="PackedScene" uid="uid://jcc0ey6hkfxy" path="res://library/scenes/impact.tscn" id="4_73dil"]
 
 [sub_resource type="Environment" id="Environment_po07e"]
 background_mode = 3
@@ -26,3 +27,5 @@ environment = SubResource("Environment_po07e")
 
 [node name="Player" parent="." instance=ExtResource("3_ebi3j")]
 scale = Vector2(0.7, 0.7)
+
+[node name="Impact" parent="." instance=ExtResource("4_73dil")]

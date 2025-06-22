@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://jcc0ey6hkfxy"]
+
+[ext_resource type="Shader" uid="uid://bbbn4n31r2l2y" path="res://library/shaders/warp.gdshader" id="1_1pw1k"]
+[ext_resource type="Script" uid="uid://c466ciolh3r34" path="res://library/scripts/impact.gd" id="3_6w0od"]
+[ext_resource type="Texture2D" uid="uid://ce57dak4kngy7" path="res://library/assets/warp-texture-marked.png" id="3_x15j8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tkdve"]
+shader = ExtResource("1_1pw1k")
+shader_parameter/mask_texture = ExtResource("3_x15j8")
+shader_parameter/impact_position = Vector2(0.5, 0.5)
+shader_parameter/impact_radius = 0.0
+shader_parameter/warp_strength = 0.05
+shader_parameter/opacity = 1.0
+
+[sub_resource type="Animation" id="Animation_x15j8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/impact_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/warp_strength")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.05]
+}
+
+[sub_resource type="Animation" id="Animation_6w0od"]
+resource_name = "impact"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/impact_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.31864, 1),
+"update": 0,
+"values": [0.0, 0.2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/warp_strength")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.05, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_scyh2"]
+_data = {
+&"RESET": SubResource("Animation_x15j8"),
+&"impact": SubResource("Animation_6w0od")
+}
+
+[node name="Impact" type="CanvasLayer"]
+script = ExtResource("3_6w0od")
+
+[node name="Impact" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_tkdve")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_x15j8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Impact")
+libraries = {
+&"": SubResource("AnimationLibrary_scyh2")
+}
