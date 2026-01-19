@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://bbbn4n31r2l2y" path="res://library/shaders/warp.gdshader" id="1_1pw1k"]
 [ext_resource type="Script" uid="uid://c466ciolh3r34" path="res://library/scripts/impact.gd" id="3_6w0od"]
-[ext_resource type="Texture2D" uid="uid://ce57dak4kngy7" path="res://library/assets/warp-texture-marked.png" id="3_x15j8"]
+[ext_resource type="Texture2D" uid="uid://dr2wybad8nha7" path="res://library/assets/warp-texture-marked.png" id="3_x15j8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tkdve"]
 shader = ExtResource("1_1pw1k")

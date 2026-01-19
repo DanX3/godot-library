@@ -1,0 +1,601 @@
+[gd_scene load_steps=17 format=3 uid="uid://ttt8o22ple3f"]
+
+[ext_resource type="Script" uid="uid://drqjgrca3llaw" path="res://library/scripts/TwoJointsIK.gd" id="1_0fsjj"]
+[ext_resource type="Animation" uid="uid://46bw07k20i0" path="res://library/assets/animations/run.res" id="1_2i38l"]
+[ext_resource type="Script" uid="uid://belbg7cojvhr2" path="res://library/scripts/PlayerTopDown.gd" id="1_tdc5n"]
+[ext_resource type="Texture2D" uid="uid://bhjhg1cgl3xh4" path="res://library/assets/rounded_rect.png" id="2_32lyd"]
+[ext_resource type="Animation" uid="uid://bsvx67dhdjql8" path="res://library/assets/animations/attack_1.res" id="2_rk1wf"]
+[ext_resource type="Animation" uid="uid://dmk822fqaa4b3" path="res://library/assets/animations/walk.res" id="2_tdc5n"]
+[ext_resource type="Texture2D" uid="uid://uf3gyl8nawgy" path="res://library/assets/samurai-parts.png" id="3_yrn8x"]
+[ext_resource type="Animation" uid="uid://btq6umj1w1tgx" path="res://library/assets/animations/jump.res" id="4_6bv6b"]
+[ext_resource type="Script" uid="uid://yt5yctw6ht32" path="res://library/scripts/IKManager.gd" id="5_4o18o"]
+[ext_resource type="Animation" uid="uid://b37p3qh18yv8u" path="res://library/assets/animations/attack_2.res" id="6_rx2xh"]
+[ext_resource type="Script" uid="uid://boohtma2v0qs7" path="res://library/scripts/Smear.gd" id="9_hu781"]
+
+[sub_resource type="Animation" id="Animation_j8nxh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Body/ArmLTarget:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(75, 54)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Body/LegR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.13795]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Body/LegR/MiddleJoint:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.46824]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Body/ArmR:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.848591]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Body/ArmR/MiddleJoint:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.64237]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Body/LegL:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.20515]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Body/LegL/MiddleJoint:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.613908]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Body/ArmL:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.795815]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Body/ArmL/MiddleJoint:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.98023e-08]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pivot/Body:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Pivot/Body/Head:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0166562]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Pivot/Body:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pivot/Body/ArmL/MiddleJoint/Smear:draw_smear")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Pivot/Body/ArmL/MiddleJoint/Smear2:draw_smear")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2i38l"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Body/LegR:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [1.18924, 0.922145]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Body/LegR/MiddleJoint:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.50688, 0.960582]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Body/ArmR:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.00125),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [1.45909, 1.66951]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Body/ArmR/MiddleJoint:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.00125),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.245957, -1.02528]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Body/LegL:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [1.32745, 1.07628]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Body/LegL/MiddleJoint:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.355816, 0.777374]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Body/Head:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [0.0452907]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Body/ArmL:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.00125),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [1.99521, 2.18177]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Body/ArmL/MiddleJoint:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.00125),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.823861, -1.30073]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pivot/Body:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.00125),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 6)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Pivot/Body:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2i38l"]
+_data = {
+&"RESET": SubResource("Animation_j8nxh"),
+&"attack_1": ExtResource("2_rk1wf"),
+&"attack_2": ExtResource("6_rx2xh"),
+&"idle": SubResource("Animation_2i38l"),
+&"jump": ExtResource("4_6bv6b"),
+&"run": ExtResource("1_2i38l"),
+&"walk": ExtResource("2_tdc5n")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32lyd"]
+radius = 42.0119
+
+[sub_resource type="Curve" id="Curve_kvqf8"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("pivot")]
+script = ExtResource("1_tdc5n")
+pivot = NodePath("Pivot")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2i38l")
+}
+autoplay = "idle"
+blend_times = [&"RESET", &"attack_1", 0.1, &"RESET", &"idle", 0.2, &"RESET", &"jump", 0.1, &"RESET", &"run", 0.1, &"RESET", &"walk", 0.1]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 92)
+shape = SubResource("CircleShape2D_32lyd")
+
+[node name="IKManager" type="Node" parent="." groups=["body_part"]]
+script = ExtResource("5_4o18o")
+metadata/_custom_type_script = "uid://yt5yctw6ht32"
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Body" type="Node2D" parent="Pivot" groups=["body_part"]]
+
+[node name="LegR" type="Node2D" parent="Pivot/Body" node_paths=PackedStringArray("target_node") groups=["body_part"]]
+position = Vector2(13, 14)
+rotation = 1.13795
+script = ExtResource("1_0fsjj")
+target_node = NodePath("../../../Targets/LegR")
+middle_joint_flipped = false
+update_ik_in_game = null
+metadata/_edit_lock_ = true
+
+[node name="Leg2" type="Sprite2D" parent="Pivot/Body/LegR"]
+position = Vector2(-2.39999, 3.20181)
+rotation = -1.57079
+scale = Vector2(0.526856, 0.526856)
+texture = ExtResource("3_yrn8x")
+offset = Vector2(-1.05014, 32.6888)
+region_enabled = true
+region_rect = Rect2(65, 681, 46, 105)
+
+[node name="MiddleJoint" type="Node2D" parent="Pivot/Body/LegR" groups=["body_part"]]
+position = Vector2(32.8451, 0.0825005)
+rotation = 1.46824
+
+[node name="Leg2" type="Sprite2D" parent="Pivot/Body/LegR/MiddleJoint"]
+rotation = -1.20155
+scale = Vector2(0.526856, 0.526856)
+texture = ExtResource("3_yrn8x")
+offset = Vector2(26.0656, 54.247)
+region_enabled = true
+region_rect = Rect2(369.611, 696.715, 83.0482, 132.81)
+
+[node name="EndJoint" type="Node2D" parent="Pivot/Body/LegR/MiddleJoint"]
+position = Vector2(56.6874, -1.94705)
+rotation = -1.52717
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/Body/LegR/MiddleJoint/EndJoint"]
+visible = false
+modulate = Color(0.729603, 0.466858, 0.768787, 1)
+position = Vector2(12, 9.53674e-07)
+rotation = 0.0113541
+scale = Vector2(0.134415, 0.132423)
+texture = ExtResource("2_32lyd")
+
+[node name="ArmR" type="Node2D" parent="Pivot/Body" node_paths=PackedStringArray("target_node") groups=["body_part"]]
+position = Vector2(28.7393, -70.6213)
+rotation = 0.848591
+scale = Vector2(0.998381, 1.00163)
+skew = 0.00442731
+script = ExtResource("1_0fsjj")
+target_node = NodePath("../ArmRTarget")
+rotate_hand = false
+update_ik_in_game = null
+metadata/_edit_lock_ = true
+
+[node name="MiddleJoint" type="Node2D" parent="Pivot/Body/ArmR" groups=["body_part"]]
+position = Vector2(41.9266, 3.07751)
+rotation = -1.64237
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/Body/ArmR/MiddleJoint"]
+position = Vector2(20.0413, 1.99676)
+rotation = -1.12071
+scale = Vector2(0.424383, 0.424383)
+texture = ExtResource("3_yrn8x")
+region_enabled = true
+region_rect = Rect2(472.752, 476.744, 78.857, 130.393)
+
+[node name="EndJoint" type="Node2D" parent="Pivot/Body/ArmR/MiddleJoint"]
+visible = false
+position = Vector2(33.0535, 7.62939e-06)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/Body/ArmR/MiddleJoint/EndJoint"]
+modulate = Color(0.729603, 0.466858, 0.768787, 1)
+position = Vector2(12, 9.53674e-07)
+rotation = 0.0113541
+scale = Vector2(0.134415, 0.132423)
+texture = ExtResource("2_32lyd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/Body/ArmR"]
+position = Vector2(22.8324, -0.910442)
+rotation = -0.926636
+scale = Vector2(0.582129, 0.582129)
+texture = ExtResource("3_yrn8x")
+region_enabled = true
+region_rect = Rect2(429.287, 363.115, 108.04, 110.524)
+
+[node name="LegL" type="Node2D" parent="Pivot/Body" node_paths=PackedStringArray("target_node") groups=["body_part"]]
+position = Vector2(-20.2607, 13.3787)
+rotation = 1.20515
+script = ExtResource("1_0fsjj")
+target_node = NodePath("../../../Targets/LegL")
+middle_joint_flipped = false
+update_ik_in_game = null
+metadata/_edit_lock_ = true
+
+[node name="Leg" type="Sprite2D" parent="Pivot/Body/LegL"]
+position = Vector2(-3.44172, 1.35622)
+rotation = -1.57079
+scale = Vector2(0.526856, 0.526856)
+texture = ExtResource("3_yrn8x")
+offset = Vector2(-1.05014, 32.6888)
+region_enabled = true
+region_rect = Rect2(65, 681, 46, 105)
+
+[node name="MiddleJoint" type="Node2D" parent="Pivot/Body/LegL" groups=["body_part"]]
+position = Vector2(35, -2)
+rotation = 0.613908
+metadata/_edit_lock_ = true
+
+[node name="Leg" type="Sprite2D" parent="Pivot/Body/LegL/MiddleJoint"]
+position = Vector2(0.999998, 0.999999)
+rotation = -1.14525
+scale = Vector2(0.526856, 0.526856)
+texture = ExtResource("3_yrn8x")
+offset = Vector2(26.0656, 54.247)
+region_enabled = true
+region_rect = Rect2(377.225, 709.446, 75.4343, 120.079)
+
+[node name="EndJoint" type="Node2D" parent="Pivot/Body/LegL/MiddleJoint"]
+position = Vector2(55, 6)
+rotation = -2.40793
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/Body/LegL/MiddleJoint/EndJoint"]
+visible = false
+modulate = Color(0.729603, 0.466858, 0.768787, 1)
+position = Vector2(12, 9.53674e-07)
+rotation = 0.0113541
+scale = Vector2(0.134415, 0.132423)
+texture = ExtResource("2_32lyd")
+
+[node name="Body" type="Sprite2D" parent="Pivot/Body"]
+position = Vector2(-0.260689, -17.6213)
+scale = Vector2(0.526856, 0.526856)
+texture = ExtResource("3_yrn8x")
+region_enabled = true
+region_rect = Rect2(250, 406, 179, 293)
+
+[node name="Head" type="Node2D" parent="Pivot/Body" groups=["body_part"]]
+position = Vector2(2.38419e-07, -86)
+rotation = 0.0166562
+
+[node name="Head" type="Sprite2D" parent="Pivot/Body/Head"]
+position = Vector2(-2, -52)
+scale = Vector2(0.526856, 0.526856)
+texture = ExtResource("3_yrn8x")
+region_enabled = true
+region_rect = Rect2(226.776, 145, 204.224, 233.605)
+
+[node name="ArmL" type="Node2D" parent="Pivot/Body" node_paths=PackedStringArray("target_node") groups=["body_part"]]
+position = Vector2(-29.2607, -72.6213)
+rotation = 0.795815
+skew = 0.00442731
+script = ExtResource("1_0fsjj")
+target_node = NodePath("../ArmLTarget")
+rotate_hand = false
+update_ik_in_game = null
+metadata/_edit_lock_ = true
+
+[node name="MiddleJoint" type="Node2D" parent="Pivot/Body/ArmL" groups=["body_part"]]
+position = Vector2(39.0044, 1.00001)
+metadata/_edit_lock_ = true
+
+[node name="Smear" type="Node2D" parent="Pivot/Body/ArmL/MiddleJoint" node_paths=PackedStringArray("line") groups=["body_part"]]
+position = Vector2(122.921, -140.738)
+rotation = -0.984743
+script = ExtResource("9_hu781")
+line = NodePath("../../../../../SmearLine")
+draw_smear = false
+min_distance = 1.0
+metadata/_custom_type_script = "uid://boohtma2v0qs7"
+
+[node name="Smear2" type="Node2D" parent="Pivot/Body/ArmL/MiddleJoint" node_paths=PackedStringArray("line") groups=["body_part"]]
+position = Vector2(82.3079, -66.0604)
+rotation = -0.984743
+script = ExtResource("9_hu781")
+line = NodePath("../../../../../SmearLine2")
+draw_smear = false
+min_distance = 1.0
+metadata/_custom_type_script = "uid://boohtma2v0qs7"
+
+[node name="HandPivot" type="Node2D" parent="Pivot/Body/ArmL/MiddleJoint"]
+position = Vector2(43.7784, -5.75414)
+
+[node name="Sword" type="Sprite2D" parent="Pivot/Body/ArmL/MiddleJoint/HandPivot"]
+position = Vector2(1.69513, 1.64462)
+rotation = 0.571769
+scale = Vector2(0.317894, 0.317894)
+texture = ExtResource("3_yrn8x")
+offset = Vector2(-7.36288, -191.979)
+region_enabled = true
+region_rect = Rect2(585.913, 232.496, 145.268, 598.788)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Pivot/Body/ArmL/MiddleJoint"]
+position = Vector2(5, -3.8147e-06)
+rotation = -2.07993
+scale = Vector2(0.505873, 0.505873)
+texture = ExtResource("3_yrn8x")
+offset = Vector2(-15.2292, 41.447)
+region_enabled = true
+region_rect = Rect2(94, 488, 86, 126)
+
+[node name="EndJoint" type="Node2D" parent="Pivot/Body/ArmL/MiddleJoint"]
+position = Vector2(49.9646, -8.00008)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/Body/ArmL"]
+position = Vector2(20.0177, 4.00004)
+rotation = -2.10258
+scale = Vector2(0.495421, 0.495421)
+texture = ExtResource("3_yrn8x")
+region_enabled = true
+region_rect = Rect2(104.758, 343.475, 100.627, 131.856)
+
+[node name="ArmLTarget" type="Marker2D" parent="Pivot/Body" groups=["body_part"]]
+position = Vector2(75, 54)
+scale = Vector2(2.14382, 0.799409)
+
+[node name="ArmRTarget" type="Marker2D" parent="Pivot/Body" groups=["body_part"]]
+position = Vector2(45.5846, -5.29539)
+
+[node name="Targets" type="Node2D" parent="."]
+position = Vector2(-19.8451, -42.0825)
+
+[node name="LegL" type="Marker2D" parent="Targets" groups=["body_part"]]
+position = Vector2(-33.1549, 128.083)
+rotation = -0.0361336
+
+[node name="LegR" type="Marker2D" parent="Targets" groups=["body_part"]]
+position = Vector2(61.8451, 132.083)
+
+[node name="SmearLine" type="Line2D" parent="."]
+width = 100.0
+width_curve = SubResource("Curve_kvqf8")
+default_color = Color(0.821789, 0.821789, 0.821789, 1)
+
+[node name="SmearLine2" type="Line2D" parent="."]
+width = 50.0
+width_curve = SubResource("Curve_kvqf8")
+default_color = Color(0.821789, 0.821789, 0.821789, 1)

@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-const SPEED = 100
+const SPEED = 150
 const JUMP_FORCE = 60
 @export var camera: Camera3D
 
