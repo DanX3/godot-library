@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bqn0ybek5ds3y"]
+
+[ext_resource type="Script" uid="uid://blfvlu27nubwk" path="res://library/scripts/stopwatch.gd" id="1_atwpm"]
+[ext_resource type="Script" uid="uid://rkf62n7bevlw" path="res://library/scripts/Blink.gd" id="2_21wuj"]
+
+[node name="Stopwatch" type="Control" unique_id=1191723196]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 85.0
+offset_bottom = 45.0
+script = ExtResource("1_atwpm")
+start_time = 10.0
+autostart = true
+
+[node name="Label" type="Label" parent="." unique_id=1920549883]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3.14"
+
+[node name="Blink" type="Node" parent="Label" unique_id=868414364]
+script = ExtResource("2_21wuj")
+properties = {
+"visible": false
+}
+
+[connection signal="finished" from="." to="." method="_on_finished"]
