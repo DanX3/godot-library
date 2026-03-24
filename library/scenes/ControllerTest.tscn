@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://baxs02kpohl44"]
+
+[ext_resource type="Script" uid="uid://c4lwfutd3847g" path="res://library/scripts/ControllerTester.gd" id="1_asgxh"]
+[ext_resource type="ArrayMesh" uid="uid://bin54eymehv03" path="res://ignored/assets/Controller.obj" id="2_1m5g8"]
+
+[node name="ControllerTest" type="Node3D" unique_id=1174662114]
+script = ExtResource("1_asgxh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=6577756]
+
+[node name="GyroValue" type="Label" parent="CanvasLayer" unique_id=1177767075]
+offset_left = 53.0
+offset_top = 5.0
+offset_right = 93.0
+offset_bottom = 28.0
+
+[node name="AccelValue" type="Label" parent="CanvasLayer" unique_id=1456593191]
+offset_left = 455.0
+offset_top = 5.0
+offset_right = 495.0
+offset_bottom = 28.0
+
+[node name="Gyro" type="Label" parent="CanvasLayer" unique_id=7001694]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Gyro"
+
+[node name="Box" type="VBoxContainer" parent="CanvasLayer" unique_id=2041018586]
+offset_left = 38.0
+offset_top = 48.0
+offset_right = 185.0
+offset_bottom = 203.0
+theme_override_constants/separation = 20
+
+[node name="X" type="ProgressBar" parent="CanvasLayer/Box" unique_id=1423967876]
+modulate = Color(1, 0, 0.007843138, 1)
+layout_mode = 2
+size_flags_vertical = 3
+min_value = -10.0
+max_value = 10.0
+show_percentage = false
+
+[node name="Y" type="ProgressBar" parent="CanvasLayer/Box" unique_id=1628337798]
+modulate = Color(0.16078432, 1, 0.11372549, 1)
+layout_mode = 2
+size_flags_vertical = 3
+min_value = -10.0
+max_value = 10.0
+show_percentage = false
+
+[node name="Z" type="ProgressBar" parent="CanvasLayer/Box" unique_id=1545940763]
+modulate = Color(0.14901961, 0.35686275, 1, 1)
+layout_mode = 2
+size_flags_vertical = 3
+min_value = -10.0
+max_value = 10.0
+show_percentage = false
+
+[node name="Box2" type="VBoxContainer" parent="CanvasLayer" unique_id=1231411488]
+offset_top = 48.0
+offset_right = 32.0
+offset_bottom = 203.0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CanvasLayer/Box2" unique_id=1685591402]
+layout_mode = 2
+size_flags_vertical = 7
+text = "X"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Box2" unique_id=1366729761]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Y"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Box2" unique_id=700143798]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Z"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Accel" type="Label" parent="CanvasLayer" unique_id=1919326465]
+offset_left = 316.0
+offset_right = 356.0
+offset_bottom = 23.0
+text = "Accelerometer"
+
+[node name="Box3" type="VBoxContainer" parent="CanvasLayer" unique_id=468881297]
+offset_left = 354.0
+offset_top = 48.0
+offset_right = 501.0
+offset_bottom = 203.0
+theme_override_constants/separation = 20
+
+[node name="X" type="ProgressBar" parent="CanvasLayer/Box3" unique_id=1517822163]
+modulate = Color(1, 0, 0.007843138, 1)
+layout_mode = 2
+size_flags_vertical = 3
+min_value = -10.0
+max_value = 10.0
+show_percentage = false
+
+[node name="Y" type="ProgressBar" parent="CanvasLayer/Box3" unique_id=1933645977]
+modulate = Color(0.16078432, 1, 0.11372549, 1)
+layout_mode = 2
+size_flags_vertical = 3
+min_value = -10.0
+max_value = 10.0
+show_percentage = false
+
+[node name="Z" type="ProgressBar" parent="CanvasLayer/Box3" unique_id=322860319]
+modulate = Color(0.14901961, 0.35686275, 1, 1)
+layout_mode = 2
+size_flags_vertical = 3
+min_value = -10.0
+max_value = 10.0
+show_percentage = false
+
+[node name="Box4" type="VBoxContainer" parent="CanvasLayer" unique_id=1312880236]
+offset_left = 316.0
+offset_top = 48.0
+offset_right = 348.0
+offset_bottom = 203.0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CanvasLayer/Box4" unique_id=1578766652]
+layout_mode = 2
+size_flags_vertical = 7
+text = "X"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Box4" unique_id=312568777]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Y"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Box4" unique_id=1104637552]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Z"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Controller" type="MeshInstance3D" parent="." unique_id=2085830429]
+mesh = ExtResource("2_1m5g8")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=779748049]
+transform = Transform3D(-1, -3.5527137e-15, -8.7422784e-08, -8.1252395e-08, 0.36902604, 0.92941916, 3.2261273e-08, 0.92941916, -0.36902604, 0, 11.292108, -3.4224706)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1648233965]
+transform = Transform3D(0.29982936, -0.71325976, -0.6335321, 0.7589771, -0.2239907, 0.61137736, -0.57797617, -0.66414523, 0.47418883, -15.385026, 10.769863, -0.23720932)
